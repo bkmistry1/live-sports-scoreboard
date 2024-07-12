@@ -1,47 +1,33 @@
-const dotEnv = require("dotenv").config().parsed;
 const express = require('express');
+const { createServer } = require('node:http');
+const { join } = require('node:path');
+const { Server } = require('socket.io');
+
 const app = express();
-const static = express.static(__dirname + '/public');
+const server = createServer(app);
+const io = new Server(server,
+    {
+        cors: {
+            origin: ['http://localhost:3000'],
+        },
+    }    
+);
 
-// const configRoutes = require('./routes');
+app.get('/', (req, res) => {
+  res.sendFile(join(__dirname, 'index.html'));
+});
 
-// const exphbs = require('express-handlebars');
+app.get('/asdf', (req, res) => {
+    res.sendFile(join(__dirname, 'scoreboard.html'));
+  });
 
-app.use('/public', static);
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+io.on('connection', (socket) => {
+    socket.on('chat message', (msg) => {
+      console.log('message: ' + msg);
+      io.emit('chat message', msg);
+    });
+  });
 
-// app.use(auth(config));
-
-// app.engine('handlebars', exphbs.engine({defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
-
-// var hbs = exphbs.create({});
-
-//register helper functions from helper.js file
-// const helpers = require("./helpers/helpers");
-// hbs.handlebars.registerHelper(helpers);
-
-// configRoutes(app);
-
-app.listen(dotEnv.httpPort, () => {
-    console.log("we've now got a server!");
-    console.log('Your routes will be running on http://localhost:' + dotEnv.httpPort);
-})
-
-
-// if(dotEnv.liveServer == "true") {
-//     var https = require('https');
-//     var fs = require('fs');
-    
-//     var options = {
-//         key: fs.readFileSync(dotEnv.serverKey),
-//         cert: fs.readFileSync(dotEnv.serverCert),
-//         requestCert: false,
-//         rejectUnauthorized: false
-//     };
-    
-//     var server = https.createServer(options, app).listen(dotEnv.httpsPort, function(){
-//         console.log("server started at port " + dotEnv.httpsPort);
-//     });
-// }
+server.listen(3000, () => {
+  console.log('server running at http://localhost:3000');
+});
