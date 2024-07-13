@@ -1,0 +1,74 @@
+{{! styling is done in courtView_style.css}}
+<div class = "allCourts"> {{! container for the 4 courts}}
+     {{! labelling courts but maybe don't need separate classes for each of them}}
+    {{#each courtArray}}
+    <div class="court">
+        <h3 id="court{{this.numOfFields}}">Court {{this.numOfFields}}</h3>
+        <h4 id="gameNum{{this.numOfFields}}">Game Number: {{this.gameNum}}</h4>
+        {{#if this.bestOfNum}}
+        <h4 id="bestOf{{this.numOfFields}}">Match Number: {{this.bestOfNum}} of {{this.bestOf}}</h4>
+        {{/if}}
+        <br>
+        {{#if this.gamesFinished}}
+            <h1> No games scheduled </h1>
+        {{else}}
+            <h1> {{this.teamName1}} vs {{this.teamName2}} </h1> {{! takes team names from court_view.js in routes}}
+        {{/if}}
+        <br>
+
+        {{! Only captains/coordinators see this}} 
+        {{#unless this.gamesFinished}}       
+        <div class="score-submission">
+            {{! "Input Score"}}
+            {{!-- //! should also include any helpers/assistans --}}
+            {{#if ../tournamentCoordinator}}
+            {{#checkTeamName this.teamName1 this.teamName2}}
+
+            <h3>Submit scores here</h3>
+
+            <br>
+            
+            <form id="scoreInputForm{{this.numOfFields}}">
+                <div class="score-columns">
+                    <section id="court{{this.numOfFields}}team1">
+                        <label id="court{{this.numOfFields}}team1Name">{{this.teamName1}}</label>
+                        <br>
+                        <input type="number" name="score1" id="court{{this.numOfFields}}score1">
+                    </section>
+                
+                    <section id="court{{this.numOfFields}}team2">
+                        <label id="court{{this.numOfFields}}team2Name">{{this.teamName2}}</label>
+                        <br>
+                        <input type="number" name="score2" id="court{{this.numOfFields}}score2">
+                    </section>
+                </div>
+
+            <br>
+            
+            <button class="{{this.numOfFields}}">Submit</button>
+
+            </form>
+            {{/checkTeamName}}
+            {{/if}}
+
+        </div>
+        {{/unless}}
+        <br>
+        {{! Everyone can see this}}
+        {{#unless this.gamesFinished}}    
+        <div class="live-stream-link">
+            <a href="https://www.youtube.com/@blessedcultureandsportsfes8608" target="_blank">Live Stream</a></li>
+        </div>
+        {{/unless}}
+        {{#if this.ref1}}
+        <br>
+        <div>
+            <p>Refs: {{this.ref1}} & {{this.ref2}}</p>
+        </div>
+        {{/if}}
+    
+    </div>
+    {{/each}}
+</div>
+
+<script src="/public/js/score_input_view.js"></script>
