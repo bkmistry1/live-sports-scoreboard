@@ -1,3 +1,4 @@
+const dotEnv = require("dotenv").config().parsed;
 const express = require('express');
 const { createServer } = require('node:http');
 // const { join } = require('node:path');
@@ -7,10 +8,13 @@ const static = express.static(__dirname + '/public');
 
 const app = express();
 const server = createServer(app);
+
+const serverUrl = dotEnv.baseUrl + ":" + dotEnv.httpPort;
+
 const io = new Server(server,
     {
         cors: {
-            origin: ['http://localhost:3000'],
+            origin: [serverUrl],
         },
     }    
 );
@@ -29,12 +33,11 @@ app.set('view engine', 'handlebars');
 configRoutes(app);
 
 io.on('connection', (socket) => {
-    socket.on('chat message', (msg) => {
-      console.log('message: ' + msg);
-      io.emit('chat message', msg);
+    socket.on('scoreboard', (scoreObj) => {
+      io.emit('score', scoreObj);
     });
   });
 
-server.listen(3000, () => {
-  console.log('server running at http://localhost:3000');
+server.listen(dotEnv.httpPort, () => {
+  console.log('server running at ' + serverUrl);
 });

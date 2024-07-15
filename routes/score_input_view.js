@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 
 		return res.render('partials/score_input_view', {
 			title: 'Score Input View',
-			shortcode: 'scoreInputView',
+			shortcode: 'score_input_view',
 		});
 	} catch (e) {
 		return res.status(500).json({ error: e });
