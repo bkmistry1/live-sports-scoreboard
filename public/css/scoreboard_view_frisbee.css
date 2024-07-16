@@ -1,0 +1,67 @@
+:root {
+	--displayColor: rgba(72, 143, 76, 0.678);
+}
+
+body {
+	animation: fadein 1.25s ease-in-out;
+}
+
+div.scoreboardOuterContainer {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	width: 68%;
+	left: 5%;
+	top: 10vh;
+	z-index: 1;
+}
+
+div.scoreboardOuterContainer > div {
+	display: flex;
+	width: 43%;
+	height: 100px;
+	justify-content: space-between;
+}
+
+div.team1 > input,
+div.team2 > input {
+	font-size: 24px;
+	display: inline-flex;
+	width: 20%;
+	padding: 10px;
+	background: none;
+	border: 0;
+}
+
+input.team1,
+input.team2 {
+	width: 100%;
+}
+
+#team1 {
+	width: 15vw;
+}
+
+#score1 {
+	width: 5vw;
+	text-align: center;
+}
+
+#team2 {
+	width: 15vw;
+	text-align: right;
+}
+
+#score2 {
+	width: 5vw;
+	text-align: center;
+}
+
+.scoreboard-images {
+	position: absolute;
+	max-width: 95vw;
+	left: 2%;
+	z-index: -1;
+}
+
+/* Need to create logged-in class? */
