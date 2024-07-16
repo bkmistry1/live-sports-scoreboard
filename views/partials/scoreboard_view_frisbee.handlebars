@@ -1,0 +1,21 @@
+<div class="scoreboardOuterContainer">
+    <div class="team1">
+        <input class="team1" id="team1" name="team1name" type="text" value="Team 1 Name" readonly="true"></input>
+        <input class="team1" id="score1" name="team1score" type="text" value="0" readonly="true"></input>
+    </div>
+
+    <div class="team2">
+        <input class="team2" id="score2" type="text" value="0" readonly="true"></input>
+        <input class="team2" id="team2" type="text" value="Team 2 Name" readonly="true"></input>
+    </div>
+</div>
+
+<img class="scoreboard-images" src="/public/images/{{scoreboard}}" alt="" />
+
+
+
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/js/scoreboard_view.js"></script>
