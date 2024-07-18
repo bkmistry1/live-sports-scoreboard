@@ -13,15 +13,15 @@
 	reset.click(function (event) {
 		event.preventDefault()
 
-		basketballbasketballScore1.val('0')
+		basketballScore1.val('0')
 		basketballScore2.val('0')
 
 		let scoreObj = {}
 
-		scoreObj.basketballTeam1 = 0
-		scoreObj.basketballTeam2 = 0
+		scoreObj.basketballTeam1 = '0'
+		scoreObj.basketballTeam2 = '0'
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_basketball', scoreObj)
 	})
 
 	basketballTeam1plus1.click(function (event) {
@@ -36,7 +36,7 @@
 		scoreObj.basketballTeam1 = basketballScore1.val()
 		scoreObj.basketballTeam2 = basketballScore2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_basketball', scoreObj)
 	})
 
 	basketballTeam1minus1.click(function (event) {
@@ -51,7 +51,7 @@
 		scoreObj.basketballTeam1 = basketballScore1.val()
 		scoreObj.basketballTeam2 = basketballScore2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_basketball', scoreObj)
 	})
 
 	basketballTeam2plus1.click(function (event) {
@@ -66,7 +66,7 @@
 		scoreObj.basketballTeam1 = basketballScore1.val()
 		scoreObj.basketballTeam2 = basketballScore2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_basketball', scoreObj)
 	})
 
 	basketballTeam2minus1.click(function (event) {
@@ -81,6 +81,6 @@
 		scoreObj.basketballTeam1 = basketballScore1.val()
 		scoreObj.basketballTeam2 = basketballScore2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_basketball', scoreObj)
 	})
 })(window.jQuery)

@@ -21,7 +21,7 @@
 		scoreObj.frisbeeTeam1 = 0
 		scoreObj.frisbeeTeam2 = 0
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_frisbee', scoreObj)
 	})
 
 	frisbeeTeam1plus1.click(function (event) {
@@ -36,7 +36,7 @@
 		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
 		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_frisbee', scoreObj)
 	})
 
 	frisbeeTeam1minus1.click(function (event) {
@@ -51,7 +51,7 @@
 		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
 		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_frisbee', scoreObj)
 	})
 
 	frisbeeTeam2plus1.click(function (event) {
@@ -66,7 +66,7 @@
 		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
 		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_frisbee', scoreObj)
 	})
 
 	frisbeeTeam2minus1.click(function (event) {
@@ -81,6 +81,6 @@
 		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
 		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit('scoreboard_frisbee', scoreObj)
 	})
 })(window.jQuery)

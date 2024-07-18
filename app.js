@@ -36,6 +36,12 @@ io.on('connection', (socket) => {
     socket.on('scoreboard', (scoreObj) => {
       io.emit('score', scoreObj);
     });
+    socket.on('scoreboard_basketball', (scoreObj) => {
+      io.emit('score_basketball', scoreObj);
+    });
+    socket.on('scoreboard_frisbee', (scoreObj) => {
+      io.emit('score_frisbee', scoreObj);
+    });
   });
 
 server.listen(dotEnv.httpPort, () => {
