@@ -1,0 +1,158 @@
+:root {
+	--buttonSpacingFromCenter: 80px;
+	--buttonBorderRadius: 5px;
+}
+
+@keyframes fadein {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+body {
+	animation: fadein 1.25s ease-in-out;
+}
+
+#scoreInputContainer {
+	position: relative;
+	width: 100%;
+	height: 30vh;
+}
+
+div.scoreboardOuterContainer {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	width: 68%;
+	left: 5%;
+	top: 10vh;
+	z-index: 1;
+}
+
+div.scoreboardOuterContainer > div {
+	display: flex;
+	width: 43%;
+	height: 100px;
+	justify-content: space-between;
+	z-index: 1;
+}
+
+div.basketballTeam1 > input,
+div.basketballTeam2 > input {
+	font-size: 24px;
+	display: inline-flex;
+	width: 20%;
+	padding: 10px;
+	background: none;
+	border: 0;
+}
+
+input.basketballTeam1,
+input.basketballTeam2 {
+	width: 100%;
+}
+
+#basketballTeam1,
+#basketballTeam2 {
+	width: 15vw;
+}
+
+#basketballScore1,
+#basketballScore2 {
+	width: 5vw;
+	text-align: center;
+}
+
+#basketballTeam2 {
+	text-align: right;
+}
+
+#basketballScore2 {
+	text-align: center;
+}
+
+.scoreboard-images {
+	position: relative;
+	width: 100%;
+	max-width: 95vw;
+	height: 25vh;
+	left: 2%;
+	z-index: 0;
+}
+
+/* Need to create logged-in class? */
+
+/* Button Styling */
+
+.button-container {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	margin-left: 3vw;
+	width: 71.5vw;
+	bottom: 7vh;
+	z-index: 2;
+}
+
+.scoreInputButtons {
+	display: flex;
+	gap: 10px;
+}
+
+button.reset {
+	position: relative;
+	left: 37vw;
+	top: -40px;
+}
+
+.scoreInputButtons button {
+	opacity: 0.95;
+	padding: 5px 20px;
+	font-size: 16px;
+	border: none;
+	border-radius: var(--buttonBorderRadius);
+	color: white;
+	background-color: #9d3f3f;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#basketballTeam1Buttons {
+	padding-right: var(--buttonSpacingFromCenter);
+}
+
+#basketballTeam1Buttons button:hover {
+	opacity: 0.95;
+	background-color: #233fc6;
+}
+
+#basketballTeam2Buttons {
+	padding-left: var(--buttonSpacingFromCenter);
+}
+
+#basketballTeam2Buttons button:hover {
+	opacity: 0.95;
+	background-color: #fb5a02;
+}
+
+button.reset {
+	padding: 8px 16px;
+	font-size: 14px;
+	border: 1px solid #e74c3c;
+	background-color: transparent;
+	border-radius: var(--buttonBorderRadius);
+	color: #e74c3c;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+button.reset:hover {
+	background-color: #e74c3c;
+	border-radius: 0;
+	color: white;
+	transition: all 0.3s ease-out;
+}
