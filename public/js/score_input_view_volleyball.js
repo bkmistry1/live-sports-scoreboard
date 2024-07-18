@@ -1,5 +1,6 @@
 ;(function ($) {
 	const socket = io()
+	const socketStringIdentifier = "scoreboard_volleyball"
 
 	const team1plus1 = $('#team1plus1')
 	const team2plus1 = $('#team2plus1')
@@ -21,7 +22,7 @@
 		scoreObj.team1 = 0
 		scoreObj.team2 = 0
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit(socketStringIdentifier, scoreObj)
 	})
 
 	team1plus1.click(function (event) {
@@ -36,7 +37,7 @@
 		scoreObj.team1 = score1.val()
 		scoreObj.team2 = score2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit(socketStringIdentifier, scoreObj)
 	})
 
 	team1minus1.click(function (event) {
@@ -51,7 +52,7 @@
 		scoreObj.team1 = score1.val()
 		scoreObj.team2 = score2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit(socketStringIdentifier, scoreObj)
 	})
 
 	team2plus1.click(function (event) {
@@ -66,7 +67,7 @@
 		scoreObj.team1 = score1.val()
 		scoreObj.team2 = score2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit(socketStringIdentifier, scoreObj)
 	})
 
 	team2minus1.click(function (event) {
@@ -81,6 +82,6 @@
 		scoreObj.team1 = score1.val()
 		scoreObj.team2 = score2.val()
 
-		socket.emit('scoreboard', scoreObj)
+		socket.emit(socketStringIdentifier, scoreObj)
 	})
 })(window.jQuery)
