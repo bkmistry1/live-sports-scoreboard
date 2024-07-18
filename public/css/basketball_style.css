@@ -40,8 +40,8 @@ div.scoreboardOuterContainer > div {
 	z-index: 1;
 }
 
-div.frisbeeTeam1 > input,
-div.frisbeeTeam2 > input {
+div.basketballTeam1 > input,
+div.basketballTeam2 > input {
 	font-size: 24px;
 	display: inline-flex;
 	width: 20%;
@@ -50,27 +50,27 @@ div.frisbeeTeam2 > input {
 	border: 0;
 }
 
-input.frisbeeTeam1,
-input.frisbeeTeam2 {
+input.basketballTeam1,
+input.basketballTeam2 {
 	width: 100%;
 }
 
-#frisbeeTeam1,
-#frisbeeTeam2 {
+#basketballTeam1,
+#basketballTeam2 {
 	width: 15vw;
 }
 
-#frisbeeScore1,
-#frisbeeScore2 {
+#basketballScore1,
+#basketballScore2 {
 	width: 5vw;
 	text-align: center;
 }
 
-#frisbeeTeam2 {
+#basketballTeam2 {
 	text-align: right;
 }
 
-#frisbeeScore2 {
+#basketballScore2 {
 	text-align: center;
 }
 
@@ -121,20 +121,20 @@ button.reset {
 	transition: background-color 0.3s ease;
 }
 
-#frisbeeTeam1Buttons {
+#basketballTeam1Buttons {
 	padding-right: var(--buttonSpacingFromCenter);
 }
 
-#frisbeeTeam1Buttons button:hover {
+#basketballTeam1Buttons button:hover {
 	opacity: 0.95;
 	background-color: #233fc6;
 }
 
-#frisbeeTeam2Buttons {
+#basketballTeam2Buttons {
 	padding-left: var(--buttonSpacingFromCenter);
 }
 
-#frisbeeTeam2Buttons button:hover {
+#basketballTeam2Buttons button:hover {
 	opacity: 0.95;
 	background-color: #fb5a02;
 }
