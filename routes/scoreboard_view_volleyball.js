@@ -4,9 +4,9 @@ const router = express.Router();
 router.get('/', async (req, res) => {
 	try {
 
-		return res.render('partials/scoreboard_view', {
+		return res.render('partials/scoreboard_view_volleyball', {
 			title: 'Scoreboard',
-			shortcode: 'scoreboard_view',
+			shortcode: 'volleyball_style',
 			scoreboard: "scoreboardvball.png",
 		});
 	} catch (e) {

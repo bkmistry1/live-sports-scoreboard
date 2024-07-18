@@ -1,5 +1,5 @@
 const scoreInputRoutes = require('./score_input_view')
-const scoreBoardRoutes = require('./scoreboard_view')
+const volleyballScoreboardRoutes = require('./scoreboard_view_volleyball')
 const frisbeeScoreboardRoutes = require('./scoreboard_view_frisbee')
 const frisbeeScoreInputRoutes = require('./score_input_view_frisbee')
 
@@ -12,7 +12,7 @@ const constructorMethod = app => {
 	})
 
 	app.use('/score_input_view', scoreInputRoutes)
-	app.use('/scoreboard_view', scoreBoardRoutes)
+	app.use('/scoreboard_view_volleyball', volleyballScoreboardRoutes)
 	app.use('/scoreboard_view_frisbee', frisbeeScoreboardRoutes)
 	app.use('/score_input_view_frisbee', frisbeeScoreInputRoutes)
 
