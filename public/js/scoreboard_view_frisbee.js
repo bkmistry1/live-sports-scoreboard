@@ -4,10 +4,10 @@
 	const socket = io(baseUrl)
 
 	socket.on('score', scoreObj => {
-		let score1 = $('#score1')
-		let score2 = $('#score2')
+		let frisbeeScore1 = $('#frisbeeScore1')
+		let frisbeeScore2 = $('#frisbeeScore2')
 
-		score1.val(scoreObj.team1)
-		score2.val(scoreObj.team2)
+		frisbeeScore1.val(scoreObj.frisbeeTeam1)
+		frisbeeScore2.val(scoreObj.frisbeeTeam2)
 	})
 })(window.jQuery)

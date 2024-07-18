@@ -1,85 +1,85 @@
 ;(function ($) {
 	const socket = io()
 
-	const team1plus1 = $('#team1plus1')
-	const team2plus1 = $('#team2plus1')
-	const team1minus1 = $('#team1minus1')
-	const team2minus1 = $('#team2minus1')
+	const frisbeeTeam1plus1 = $('#frisbeeTeam1plus1')
+	const frisbeeTeam2plus1 = $('#frisbeeTeam2plus1')
+	const frisbeeTeam1minus1 = $('#frisbeeTeam1minus1')
+	const frisbeeTeam2minus1 = $('#frisbeeTeam2minus1')
 	const reset = $('#resetScore')
 
-	const score1 = $('#score1')
-	const score2 = $('#score2')
+	const frisbeeScore1 = $('#frisbeeScore1')
+	const frisbeeScore2 = $('#frisbeeScore2')
 
 	reset.click(function (event) {
 		event.preventDefault()
 
-		score1.val('0')
-		score2.val('0')
+		frisbeeScore1.val('0')
+		frisbeeScore2.val('0')
 
 		let scoreObj = {}
 
-		scoreObj.team1 = 0
-		scoreObj.team2 = 0
+		scoreObj.frisbeeTeam1 = 0
+		scoreObj.frisbeeTeam2 = 0
 
 		socket.emit('scoreboard', scoreObj)
 	})
 
-	team1plus1.click(function (event) {
+	frisbeeTeam1plus1.click(function (event) {
 		event.preventDefault()
 
-		let score = parseInt(score1.val())
+		let score = parseInt(frisbeeScore1.val())
 		score++
-		score1.val(score.toString())
+		frisbeeScore1.val(score.toString())
 
 		let scoreObj = {}
 
-		scoreObj.team1 = score1.val()
-		scoreObj.team2 = score2.val()
+		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
+		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
 
 		socket.emit('scoreboard', scoreObj)
 	})
 
-	team1minus1.click(function (event) {
+	frisbeeTeam1minus1.click(function (event) {
 		event.preventDefault()
 
-		let score = parseInt(score1.val())
+		let score = parseInt(frisbeeScore1.val())
 		score--
-		score1.val(score.toString())
+		frisbeeScore1.val(score.toString())
 
 		let scoreObj = {}
 
-		scoreObj.team1 = score1.val()
-		scoreObj.team2 = score2.val()
+		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
+		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
 
 		socket.emit('scoreboard', scoreObj)
 	})
 
-	team2plus1.click(function (event) {
+	frisbeeTeam2plus1.click(function (event) {
 		event.preventDefault()
 
-		let score = parseInt(score2.val())
+		let score = parseInt(frisbeeScore2.val())
 		score++
-		score2.val(score.toString())
+		frisbeeScore2.val(score.toString())
 
 		let scoreObj = {}
 
-		scoreObj.team1 = score1.val()
-		scoreObj.team2 = score2.val()
+		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
+		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
 
 		socket.emit('scoreboard', scoreObj)
 	})
 
-	team2minus1.click(function (event) {
+	frisbeeTeam2minus1.click(function (event) {
 		event.preventDefault()
 
-		let score = parseInt(score2.val())
+		let score = parseInt(frisbeeScore2.val())
 		score--
-		score2.val(score.toString())
+		frisbeeScore2.val(score.toString())
 
 		let scoreObj = {}
 
-		scoreObj.team1 = score1.val()
-		scoreObj.team2 = score2.val()
+		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
+		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
 
 		socket.emit('scoreboard', scoreObj)
 	})

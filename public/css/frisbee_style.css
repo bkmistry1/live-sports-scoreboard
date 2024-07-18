@@ -40,8 +40,8 @@ div.scoreboardOuterContainer > div {
 	z-index: 1;
 }
 
-div.team1 > input,
-div.team2 > input {
+div.frisbeeTeam1 > input,
+div.frisbeeTeam2 > input {
 	font-size: 24px;
 	display: inline-flex;
 	width: 20%;
@@ -50,27 +50,27 @@ div.team2 > input {
 	border: 0;
 }
 
-input.team1,
-input.team2 {
+input.frisbeeTeam1,
+input.frisbeeTeam2 {
 	width: 100%;
 }
 
-#team1,
-#team2 {
+#frisbeeTeam1,
+#frisbeeTeam2 {
 	width: 15vw;
 }
 
-#score1,
-#score2 {
+#frisbeeScore1,
+#frisbeeScore2 {
 	width: 5vw;
 	text-align: center;
 }
 
-#team2 {
+#frisbeeTeam2 {
 	text-align: right;
 }
 
-#score2 {
+#frisbeeScore2 {
 	text-align: center;
 }
 
@@ -121,20 +121,20 @@ button.reset {
 	transition: background-color 0.3s ease;
 }
 
-#team1Buttons {
+#frisbeeTeam1Buttons {
 	padding-right: var(--buttonSpacingFromCenter);
 }
 
-#team1Buttons button:hover {
+#frisbeeTeam1Buttons button:hover {
 	opacity: 0.95;
 	background-color: #233fc6;
 }
 
-#team2Buttons {
+#frisbeeTeam2Buttons {
 	padding-left: var(--buttonSpacingFromCenter);
 }
 
-#team2Buttons button:hover {
+#frisbeeTeam2Buttons button:hover {
 	opacity: 0.95;
 	background-color: #fb5a02;
 }
