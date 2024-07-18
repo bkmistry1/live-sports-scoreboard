@@ -1,43 +1,86 @@
-(function ($) {
-	
-	const socket = io();
-  
-	const button1 = $("#button1");
-	const button2 = $("#button2");
+;(function ($) {
+	const socket = io()
 
-	const score1 = $("#score1");
-	const score2 = $("#score2");
+	const team1plus1 = $('#team1plus1')
+	const team2plus1 = $('#team2plus1')
+	const team1minus1 = $('#team1minus1')
+	const team2minus1 = $('#team2minus1')
+	const reset = $('#resetScore')
 
-	button1.click(function (event) {
-		event.preventDefault();
+	const score1 = $('#score1')
+	const score2 = $('#score2')
 
-		let score = parseInt(score1.val());
-		score++;
-		score1.val(score.toString());
+	reset.click(function (event) {
+		event.preventDefault()
 
-		let scoreObj = {};
+		score1.val('0')
+		score2.val('0')
 
-		scoreObj.team1 = score1.val();
-		scoreObj.team2 = score2.val();
+		let scoreObj = {}
 
-		socket.emit('scoreboard', scoreObj);		
-	});
+		scoreObj.team1 = 0
+		scoreObj.team2 = 0
 
-	button2.click(function (event) {
-		event.preventDefault();
+		socket.emit('scoreboard', scoreObj)
+	})
 
-		let score = parseInt(score2.val());
-		score++;
-		score2.val(score.toString());
+	team1plus1.click(function (event) {
+		event.preventDefault()
 
-		let scoreObj = {};
+		let score = parseInt(score1.val())
+		score++
+		score1.val(score.toString())
 
-		scoreObj.team1 = score1.val();
-		scoreObj.team2 = score2.val();
+		let scoreObj = {}
 
-		socket.emit('scoreboard', scoreObj);		
-	});	
+		scoreObj.team1 = score1.val()
+		scoreObj.team2 = score2.val()
 
-	
+		socket.emit('scoreboard', scoreObj)
+	})
 
-})(window.jQuery);
+	team1minus1.click(function (event) {
+		event.preventDefault()
+
+		let score = parseInt(score1.val())
+		score--
+		score1.val(score.toString())
+
+		let scoreObj = {}
+
+		scoreObj.team1 = score1.val()
+		scoreObj.team2 = score2.val()
+
+		socket.emit('scoreboard', scoreObj)
+	})
+
+	team2plus1.click(function (event) {
+		event.preventDefault()
+
+		let score = parseInt(score2.val())
+		score++
+		score2.val(score.toString())
+
+		let scoreObj = {}
+
+		scoreObj.team1 = score1.val()
+		scoreObj.team2 = score2.val()
+
+		socket.emit('scoreboard', scoreObj)
+	})
+
+	team2minus1.click(function (event) {
+		event.preventDefault()
+
+		let score = parseInt(score2.val())
+		score--
+		score2.val(score.toString())
+
+		let scoreObj = {}
+
+		scoreObj.team1 = score1.val()
+		scoreObj.team2 = score2.val()
+
+		socket.emit('scoreboard', scoreObj)
+	})
+})(window.jQuery)

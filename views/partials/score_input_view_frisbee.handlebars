@@ -1,14 +1,31 @@
+<div id="scoreInputContainer">
+    <div class="scoreboardOuterContainer">
+        <div class="team1">
+            <input class="team1" id="team1" name="team1name" type="text" value="Team 1 Name" readonly="true"></input>
+            <input class="team1" id="score1" name="team1score" type="text" value="0" readonly="true"></input>
+        </div>
 
+        <div class="team2">
+            <input class="team2" id="score2" type="text" value="0" readonly="true"></input>
+            <input class="team2" id="team2" type="text" value="Team 2 Name" readonly="true"></input>
+        </div>
+    </div>
 
-<input id="team1" type="text" value="team1" readonly="true"></input>
-<input id="score1" type="text" value="0" readonly="true"></input>
-<input id="score2" type="text" value="0" readonly="true"></input>
-<input id="team2" type="text" value="team2" readonly="true"></input>
+    <img class="scoreboard-images" src="../../public/images/{{scoreboard}}" alt="" />
 
-</br>
+    <div class="button-container">
+        <div class="scoreInputButtons" id="team1Buttons">
+            <button id="team1minus1" name="button">- 1</button>
+            <button id="team1plus1" name="button">+ 1</button>
+        </div>
+        <div class="scoreInputButtons" id="team2Buttons">
+            <button id="team2minus1" name="button">- 1</button>
+            <button id="team2plus1" name="button">+ 1</button>
+        </div>
+    </div>
+</div>
 
-<button id="button1" name="button">Team 1</button>
-<button id="button2" name="button">Team 2</button>
+<button class="reset" id="resetScore" type="button">Reset</button>
 
 
 <script src="/socket.io/socket.io.js"></script>
