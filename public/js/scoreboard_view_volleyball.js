@@ -3,7 +3,7 @@
 
 	const socket = io(baseUrl)
 
-	socket.on('score', scoreObj => {
+	socket.on('score_volleyball', scoreObj => {
 		let score1 = $('#score1')
 		let score2 = $('#score2')
 
