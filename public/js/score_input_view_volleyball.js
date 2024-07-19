@@ -2,10 +2,6 @@
 	const socket = io()
 	const socketStringIdentifier = "scoreboard_volleyball"
 
-	// const team1plus1 = $('#team1plus1')
-	// const team2plus1 = $('#team2plus1')
-	// const team1minus1 = $('#team1minus1')
-	// const team2minus1 = $('#team2minus1')
 	const reset = $('#resetScore')
 
 	const score1 = $('#score1')
