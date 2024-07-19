@@ -34,7 +34,6 @@ configRoutes(app);
 
 io.on('connection', (socket) => {
     socket.on('scoreboard_volleyball', (scoreObj) => {
-      console.log(scoreObj)
       io.emit('score_volleyball', scoreObj);
     });
     socket.on('scoreboard_basketball', (scoreObj) => {
