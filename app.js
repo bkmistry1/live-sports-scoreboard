@@ -42,6 +42,13 @@ io.on('connection', (socket) => {
     socket.on('scoreboard_frisbee', (scoreObj) => {
       io.emit('score_frisbee', scoreObj);
     });
+    socket.on('updateFrisbeeTeamName', (value, id) => {
+      data = {}
+      data.value = value
+      data.id = id
+      
+      io.emit('frisbeeTeamNameUpdate', data)
+    })
   });
 
 server.listen(dotEnv.httpPort, () => {

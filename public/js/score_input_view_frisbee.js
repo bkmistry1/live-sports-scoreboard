@@ -9,6 +9,18 @@
 
 	const frisbeeScore1 = $('#frisbeeScore1')
 	const frisbeeScore2 = $('#frisbeeScore2')
+	const frisbeeTeam1Name = $('#frisbeeTeam1')
+	const frisbeeTeam2Name = $('#frisbeeTeam2')
+
+
+
+	frisbeeTeam1Name.change(function updateTeamName() {
+		socket.emit("updateFrisbeeTeamName", frisbeeTeam1Name.val(), frisbeeTeam1Name[0].id)
+	})
+
+	frisbeeTeam2Name.change(function updateTeamName() {
+		socket.emit("updateFrisbeeTeamName", frisbeeTeam2Name.val(), frisbeeTeam2Name[0].id)
+	})
 
 	reset.click(function (event) {
 		event.preventDefault()
@@ -84,3 +96,8 @@
 		socket.emit('scoreboard_frisbee', scoreObj)
 	})
 })(window.jQuery)
+
+
+function updateTeamName(input) {
+	socket.emit("updateTeamName", input.value, input.id)
+}
