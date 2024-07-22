@@ -1,18 +1,21 @@
 ;(function ($) {
 	const socket = io()
 
+	const header = $('#frisbeeHeader')
+	const frisbeeScore1 = $('#frisbeeScore1')
+	const frisbeeScore2 = $('#frisbeeScore2')
+	const frisbeeTeam1Name = $('#frisbeeTeam1')
+	const frisbeeTeam2Name = $('#frisbeeTeam2')
+
 	const frisbeeTeam1plus1 = $('#frisbeeTeam1plus1')
 	const frisbeeTeam2plus1 = $('#frisbeeTeam2plus1')
 	const frisbeeTeam1minus1 = $('#frisbeeTeam1minus1')
 	const frisbeeTeam2minus1 = $('#frisbeeTeam2minus1')
 	const reset = $('#resetScore')
 
-	const frisbeeScore1 = $('#frisbeeScore1')
-	const frisbeeScore2 = $('#frisbeeScore2')
-	const frisbeeTeam1Name = $('#frisbeeTeam1')
-	const frisbeeTeam2Name = $('#frisbeeTeam2')
-
-
+	header.change(function updateHeader() {
+		socket.emit("updateHeader", header.val(), header.id)
+	})
 
 	frisbeeTeam1Name.change(function updateTeamName() {
 		socket.emit("updateFrisbeeTeamName", frisbeeTeam1Name.val(), frisbeeTeam1Name[0].id)

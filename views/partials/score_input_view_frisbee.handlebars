@@ -1,27 +1,28 @@
-<div id="scoreInputContainer">
-    <div class="scoreboardOuterContainer">
-        <div class="frisbeeTeam1">
-            <input class="frisbeeTeam1 frisbeeTeamName" id="frisbeeTeam1" name="frisbeeTeam1name" type="text" value="" placeholder="Team 1 Name"></input>
-            <input class="frisbeeTeam1" id="frisbeeScore1" name="frisbeeTeam1score" type="text" value="0" readonly="true"></input>
-        </div>
-
-        <div class="frisbeeTeam2">
-            <input class="frisbeeTeam2" id="frisbeeScore2" type="text" value="0" readonly="true"></input>
-            <input class="frisbeeTeam2 frisbeeTeamName" id="frisbeeTeam2" type="text" value="" placeholder="Team 2 Name"></input>
-        </div>
+<div>
+    <input class="header inputs" id="frisbeeHeader" type="text" value="BCSF Frisbee">
+</div>
+<div class="scoreboardOuterContainer">
+    <div class="frisbeeTeam1">
+        <input class="frisbeeTeam1 inputs" id="frisbeeTeam1" name="frisbeeTeam1name" type="text" value="" placeholder="Team 1 Name"></input>
+        <input class="frisbeeTeam1 inputs" id="frisbeeScore1" name="frisbeeTeam1score" type="text" value="0" readonly="true"></input>
     </div>
 
-    <img class="scoreboard-images" src="../../public/images/{{scoreboard}}" alt="" />
+    <div class="frisbeeTeam2">
+        <input class="frisbeeTeam2 inputs" id="frisbeeScore2" type="text" value="0" readonly="true"></input>
+        <input class="frisbeeTeam2 inputs" id="frisbeeTeam2" type="text" value="" placeholder="Team 2 Name"></input>
+    </div>
+</div>
 
-    <div class="button-container">
-        <div class="scoreInputButtons" id="frisbeeTeam1Buttons">
-            <button id="frisbeeTeam1minus1" name="button">- 1</button>
-            <button id="frisbeeTeam1plus1" name="button">+ 1</button>
-        </div>
-        <div class="scoreInputButtons" id="frisbeeTeam2Buttons">
-            <button id="frisbeeTeam2minus1" name="button">- 1</button>
-            <button id="frisbeeTeam2plus1" name="button">+ 1</button>
-        </div>
+<img class="scoreboard-images" src="../../public/images/{{scoreboard}}" alt="" />
+
+<div class="button-container">
+    <div class="scoreInputButtons" id="frisbeeTeam1Buttons">
+        <button id="frisbeeTeam1minus1" name="button">- 1</button>
+        <button id="frisbeeTeam1plus1" name="button">+ 1</button>
+    </div>
+    <div class="scoreInputButtons" id="frisbeeTeam2Buttons">
+        <button id="frisbeeTeam2minus1" name="button">- 1</button>
+        <button id="frisbeeTeam2plus1" name="button">+ 1</button>
     </div>
 </div>
 
