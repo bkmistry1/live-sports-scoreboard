@@ -36,12 +36,30 @@ io.on('connection', (socket) => {
     socket.on('scoreboard_volleyball', (scoreObj) => {
       io.emit('score_volleyball', scoreObj);
     });
+    
     socket.on('scoreboard_basketball', (scoreObj) => {
       io.emit('score_basketball', scoreObj);
     });
+
     socket.on('scoreboard_frisbee', (scoreObj) => {
       io.emit('score_frisbee', scoreObj);
     });
+
+    socket.on('updateFrisbeeTeamName', (value, id) => {
+      let data = {}
+      data.value = value
+      data.id = id
+      
+      io.emit('frisbeeTeamNameUpdate', data)
+    })
+
+    socket.on('updateHeader', (value, id) => {
+      let data = {}
+      data.value = value
+      data.id = id
+
+      io.emit('updateHeader', data)
+    })
   });
 
 server.listen(dotEnv.httpPort, () => {
