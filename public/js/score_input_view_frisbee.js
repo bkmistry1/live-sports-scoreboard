@@ -17,12 +17,8 @@
 		socket.emit("updateHeader", header.val(), header.id)
 	})
 
-	frisbeeTeam1Name.change(function updateTeamName() {
-		socket.emit("updateFrisbeeTeamName", frisbeeTeam1Name.val(), frisbeeTeam1Name[0].id)
-	})
-
-	frisbeeTeam2Name.change(function updateTeamName() {
-		socket.emit("updateFrisbeeTeamName", frisbeeTeam2Name.val(), frisbeeTeam2Name[0].id)
+	$('.teamName').change(function updateTeamName() {
+		socket.emit("updateTeamName", $(this).val(), $(this)[0].id)
 	})
 
 	reset.click(function (event) {
