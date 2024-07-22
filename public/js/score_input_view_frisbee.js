@@ -4,8 +4,6 @@
 	const header = $('#frisbeeHeader')
 	const frisbeeScore1 = $('#frisbeeScore1')
 	const frisbeeScore2 = $('#frisbeeScore2')
-	const frisbeeTeam1Name = $('#frisbeeTeam1')
-	const frisbeeTeam2Name = $('#frisbeeTeam2')
 
 	const frisbeeTeam1plus1 = $('#frisbeeTeam1plus1')
 	const frisbeeTeam2plus1 = $('#frisbeeTeam2plus1')
@@ -19,6 +17,10 @@
 
 	$('.teamName').change(function updateTeamName() {
 		socket.emit("updateTeamName", $(this).val(), $(this)[0].id)
+	})
+
+	$('.teamScore').change(function updateTeamScore() {
+		socket.emit("updateTeamScore", $(this).val(), $(this)[0].id)
 	})
 
 	reset.click(function (event) {

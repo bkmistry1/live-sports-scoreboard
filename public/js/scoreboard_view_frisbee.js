@@ -20,4 +20,10 @@
 		
 		frisbeeHeader.val(data.value)
 	})
+
+	socket.on('teamScoreUpdate', (data) => {
+		let frisbeeScore = $(`#${data.id}`)
+
+		frisbeeScore.val(data.value)
+	})
 })(window.jQuery)

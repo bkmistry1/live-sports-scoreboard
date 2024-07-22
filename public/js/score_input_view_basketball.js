@@ -4,8 +4,6 @@
 	const header = $('#basketballHeader')
 	const basketballScore1 = $('#basketballScore1')
 	const basketballScore2 = $('#basketballScore2')
-	const basketballTeam1Name = $('#basketballTeam1')
-	const basketballTeam2Name = $('#basketballTeam2')
 
 	const basketballTeam1plus1 = $('#basketballTeam1plus1')
 	const basketballTeam2plus1 = $('#basketballTeam2plus1')
@@ -19,6 +17,10 @@
 
 	$('.teamName').change(function updateTeamName() {
 		socket.emit("updateTeamName", $(this).val(), $(this)[0].id)
+	})
+
+	$('.teamScore').change(function updateTeamScore() {
+		socket.emit("updateTeamScore", $(this).val(), $(this)[0].id)
 	})
 
 	reset.click(function (event) {

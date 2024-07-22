@@ -53,6 +53,14 @@ io.on('connection', (socket) => {
       io.emit('teamNameUpdate', data)
     })
 
+    socket.on('updateTeamScore', (value, id) => {
+      let data = {}
+      data.value = value
+      data.id = id
+      
+      io.emit('teamScoreUpdate', data)
+    })
+
     socket.on('updateHeader', (value, id) => {
       let data = {}
       data.value = value

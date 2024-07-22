@@ -22,4 +22,10 @@
 		
 		basketballHeader.val(data.value)
 	})
+
+	socket.on('teamScoreUpdate', (data) => {
+		let basketballScore = $(`#${data.id}`)
+
+		basketballScore.val(data.value)
+	})
 })(window.jQuery)
