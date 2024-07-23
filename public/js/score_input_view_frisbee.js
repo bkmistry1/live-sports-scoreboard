@@ -4,8 +4,6 @@
 	const header = $('#frisbeeHeader')
 	const frisbeeScore1 = $('#frisbeeScore1')
 	const frisbeeScore2 = $('#frisbeeScore2')
-	const frisbeeTeam1Name = $('#frisbeeTeam1')
-	const frisbeeTeam2Name = $('#frisbeeTeam2')
 
 	const frisbeeTeam1plus1 = $('#frisbeeTeam1plus1')
 	const frisbeeTeam2plus1 = $('#frisbeeTeam2plus1')
@@ -17,12 +15,12 @@
 		socket.emit("updateHeader", header.val(), header.id)
 	})
 
-	frisbeeTeam1Name.change(function updateTeamName() {
-		socket.emit("updateFrisbeeTeamName", frisbeeTeam1Name.val(), frisbeeTeam1Name[0].id)
+	$('.teamName').change(function updateTeamName() {
+		socket.emit("updateTeamName", $(this).val(), $(this)[0].id)
 	})
 
-	frisbeeTeam2Name.change(function updateTeamName() {
-		socket.emit("updateFrisbeeTeamName", frisbeeTeam2Name.val(), frisbeeTeam2Name[0].id)
+	$('.teamScore').change(function updateTeamScore() {
+		socket.emit("updateTeamScore", $(this).val(), $(this)[0].id)
 	})
 
 	reset.click(function (event) {

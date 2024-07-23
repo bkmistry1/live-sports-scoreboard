@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
 		return res.render('partials/scoreboard_view_basketball', {
 			title: 'Basketball Scoreboard',
 			shortcode: 'basketball_style',
-			scoreboard: 'basketball.png',
+			scoreboard: 'scoreboardfrisBIG.png',
 		})
 	} catch (e) {
 		return res.status(500).json({ error: e })

@@ -1,14 +1,27 @@
 ;(function ($) {
 	const socket = io()
 
+	const header = $('#basketballHeader')
+	const basketballScore1 = $('#basketballScore1')
+	const basketballScore2 = $('#basketballScore2')
+
 	const basketballTeam1plus1 = $('#basketballTeam1plus1')
 	const basketballTeam2plus1 = $('#basketballTeam2plus1')
 	const basketballTeam1minus1 = $('#basketballTeam1minus1')
 	const basketballTeam2minus1 = $('#basketballTeam2minus1')
 	const reset = $('#resetScore')
 
-	const basketballScore1 = $('#basketballScore1')
-	const basketballScore2 = $('#basketballScore2')
+	header.change(function updateHeader() {
+		socket.emit("updateHeader", header.val(), header.id)
+	})
+
+	$('.teamName').change(function updateTeamName() {
+		socket.emit("updateTeamName", $(this).val(), $(this)[0].id)
+	})
+
+	$('.teamScore').change(function updateTeamScore() {
+		socket.emit("updateTeamScore", $(this).val(), $(this)[0].id)
+	})
 
 	reset.click(function (event) {
 		event.preventDefault()

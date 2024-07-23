@@ -45,12 +45,20 @@ io.on('connection', (socket) => {
       io.emit('score_frisbee', scoreObj);
     });
 
-    socket.on('updateFrisbeeTeamName', (value, id) => {
+    socket.on('updateTeamName', (value, id) => {
       let data = {}
       data.value = value
       data.id = id
       
-      io.emit('frisbeeTeamNameUpdate', data)
+      io.emit('teamNameUpdate', data)
+    })
+
+    socket.on('updateTeamScore', (value, id) => {
+      let data = {}
+      data.value = value
+      data.id = id
+      
+      io.emit('teamScoreUpdate', data)
     })
 
     socket.on('updateHeader', (value, id) => {
