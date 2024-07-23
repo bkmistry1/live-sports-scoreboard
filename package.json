@@ -8,7 +8,7 @@
   },
   "scripts": {
     "prestart": "git pull && npm install",
-    "devStart": "nodemon app.js",
+    "devStart": "git pull && nodemon app.js",
     "start": "git pull && node app.js"
   }
 }

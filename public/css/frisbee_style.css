@@ -40,7 +40,7 @@ div.scoreboardOuterContainer > div {
 	z-index: 1;
 }
 
-.inputs {
+input {
 	font-size: 24px;
 	display: inline-flex;
 	width: 20%;

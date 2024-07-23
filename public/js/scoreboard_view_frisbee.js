@@ -9,14 +9,21 @@
 		frisbeeScore2.val(scoreObj.frisbeeTeam2)
 	})
 
-	socket.on('frisbeeTeamNameUpdate', (data) => {
+	socket.on('teamNameUpdate', (data) => {
 		let frisTeam = $(`#${data.id}`)
 
 		frisTeam.val(data.value)
 	})
 
 	socket.on('updateHeader', data => {
-		const frisbeeHeader = $('#frisbeeHeader')
-		if (data.id == frisbeeHeader.id) frisbeeHeader.val(data.value)
+		const frisbeeHeader = `#${data.id}`
+		
+		frisbeeHeader.val(data.value)
+	})
+
+	socket.on('teamScoreUpdate', (data) => {
+		let frisbeeScore = $(`#${data.id}`)
+
+		frisbeeScore.val(data.value)
 	})
 })(window.jQuery)
