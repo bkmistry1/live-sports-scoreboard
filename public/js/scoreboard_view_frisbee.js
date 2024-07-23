@@ -16,7 +16,7 @@
 	})
 
 	socket.on('updateHeader', data => {
-		const frisbeeHeader = `#${data.id}`
+		const frisbeeHeader = $(`#${data.id}`)
 		
 		frisbeeHeader.val(data.value)
 	})
