@@ -23,82 +23,60 @@
 		socket.emit("updateTeamScore", $(this).val(), $(this)[0].id)
 	})
 
-	reset.click(function (event) {
+	$(':button').click(function(event) {
 		event.preventDefault()
 
-		frisbeeScore1.val('0')
-		frisbeeScore2.val('0')
+		let buttonId = $(this).attr('id')
 
 		let scoreObj = {}
 
-		scoreObj.frisbeeTeam1 = 0
-		scoreObj.frisbeeTeam2 = 0
+		switch (buttonId) {
+			case reset.attr('id'): {
+				frisbeeScore1.val('0')
+				frisbeeScore2.val('0')
 
-		socket.emit('scoreboard_frisbee', scoreObj)
-	})
+				scoreObj.frisbeeTeam1 = 0
+				scoreObj.frisbeeTeam2 = 0
+				break
+			}
+			case frisbeeTeam1plus1.attr('id'): {
+				let score = parseInt(frisbeeScore1.val())
+				score++
+				frisbeeScore1.val(score.toString())
 
-	frisbeeTeam1plus1.click(function (event) {
-		event.preventDefault()
+				scoreObj.frisbeeTeam1 = frisbeeScore1.val()
+				scoreObj.frisbeeTeam2 = frisbeeScore2.val()
+				break
+			}
+			case frisbeeTeam2plus1.attr('id'): {
+				let score = parseInt(frisbeeScore2.val())
+				score++
+				frisbeeScore2.val(score.toString())
 
-		let score = parseInt(frisbeeScore1.val())
-		score++
-		frisbeeScore1.val(score.toString())
+				scoreObj.frisbeeTeam1 = frisbeeScore1.val()
+				scoreObj.frisbeeTeam2 = frisbeeScore2.val()
+				break
+			}
+			case frisbeeTeam1minus1.attr('id'): {
+				let score = parseInt(frisbeeScore1.val())
+				score--
+				frisbeeScore1.val(score.toString())
 
-		let scoreObj = {}
+				scoreObj.frisbeeTeam1 = frisbeeScore1.val()
+				scoreObj.frisbeeTeam2 = frisbeeScore2.val()
+				break
+			}
+			case frisbeeTeam2minus1.attr('id'): {
+				let score = parseInt(frisbeeScore2.val())
+				score--
+				frisbeeScore2.val(score.toString())
 
-		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
-		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
-
-		socket.emit('scoreboard_frisbee', scoreObj)
-	})
-
-	frisbeeTeam1minus1.click(function (event) {
-		event.preventDefault()
-
-		let score = parseInt(frisbeeScore1.val())
-		score--
-		frisbeeScore1.val(score.toString())
-
-		let scoreObj = {}
-
-		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
-		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
-
-		socket.emit('scoreboard_frisbee', scoreObj)
-	})
-
-	frisbeeTeam2plus1.click(function (event) {
-		event.preventDefault()
-
-		let score = parseInt(frisbeeScore2.val())
-		score++
-		frisbeeScore2.val(score.toString())
-
-		let scoreObj = {}
-
-		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
-		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
-
-		socket.emit('scoreboard_frisbee', scoreObj)
-	})
-
-	frisbeeTeam2minus1.click(function (event) {
-		event.preventDefault()
-
-		let score = parseInt(frisbeeScore2.val())
-		score--
-		frisbeeScore2.val(score.toString())
-
-		let scoreObj = {}
-
-		scoreObj.frisbeeTeam1 = frisbeeScore1.val()
-		scoreObj.frisbeeTeam2 = frisbeeScore2.val()
+				scoreObj.frisbeeTeam1 = frisbeeScore1.val()
+				scoreObj.frisbeeTeam2 = frisbeeScore2.val()
+				break
+			}
+		} 
 
 		socket.emit('scoreboard_frisbee', scoreObj)
 	})
 })(window.jQuery)
-
-
-function updateTeamName(input) {
-	socket.emit("updateTeamName", input.value, input.id)
-}
