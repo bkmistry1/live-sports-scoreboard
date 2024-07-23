@@ -23,76 +23,59 @@
 		socket.emit("updateTeamScore", $(this).val(), $(this)[0].id)
 	})
 
-	reset.click(function (event) {
+	$(':button').click(function(event) {
 		event.preventDefault()
 
-		basketballScore1.val('0')
-		basketballScore2.val('0')
+		let buttonId = $(this).attr('id')
 
 		let scoreObj = {}
 
-		scoreObj.basketballTeam1 = '0'
-		scoreObj.basketballTeam2 = '0'
+		switch (buttonId) {
+			case reset.attr('id'): {
+				basketballScore1.val('0')
+				basketballScore2.val('0')
 
-		socket.emit('scoreboard_basketball', scoreObj)
-	})
+				scoreObj.basketballTeam1 = 0
+				scoreObj.basketballTeam2 = 0
+				break
+			}
+			case basketballTeam1plus1.attr('id'): {
+				let score = parseInt(basketballScore1.val())
+				score++
+				basketballScore1.val(score.toString())
 
-	basketballTeam1plus1.click(function (event) {
-		event.preventDefault()
+				scoreObj.basketballTeam1 = basketballScore1.val()
+				scoreObj.basketballTeam2 = basketballScore2.val()
+				break
+			}
+			case basketballTeam2plus1.attr('id'): {
+				let score = parseInt(basketballScore2.val())
+				score++
+				basketballScore2.val(score.toString())
 
-		let score = parseInt(basketballScore1.val())
-		score++
-		basketballScore1.val(score.toString())
+				scoreObj.basketballTeam1 = basketballScore1.val()
+				scoreObj.basketballTeam2 = basketballScore2.val()
+				break
+			}
+			case basketballTeam1minus1.attr('id'): {
+				let score = parseInt(basketballScore1.val())
+				score--
+				basketballScore1.val(score.toString())
 
-		let scoreObj = {}
+				scoreObj.basketballTeam1 = basketballScore1.val()
+				scoreObj.basketballTeam2 = basketballScore2.val()
+				break
+			}
+			case basketballTeam2minus1.attr('id'): {
+				let score = parseInt(basketballScore2.val())
+				score--
+				basketballScore2.val(score.toString())
 
-		scoreObj.basketballTeam1 = basketballScore1.val()
-		scoreObj.basketballTeam2 = basketballScore2.val()
-
-		socket.emit('scoreboard_basketball', scoreObj)
-	})
-
-	basketballTeam1minus1.click(function (event) {
-		event.preventDefault()
-
-		let score = parseInt(basketballScore1.val())
-		score--
-		basketballScore1.val(score.toString())
-
-		let scoreObj = {}
-
-		scoreObj.basketballTeam1 = basketballScore1.val()
-		scoreObj.basketballTeam2 = basketballScore2.val()
-
-		socket.emit('scoreboard_basketball', scoreObj)
-	})
-
-	basketballTeam2plus1.click(function (event) {
-		event.preventDefault()
-
-		let score = parseInt(basketballScore2.val())
-		score++
-		basketballScore2.val(score.toString())
-
-		let scoreObj = {}
-
-		scoreObj.basketballTeam1 = basketballScore1.val()
-		scoreObj.basketballTeam2 = basketballScore2.val()
-
-		socket.emit('scoreboard_basketball', scoreObj)
-	})
-
-	basketballTeam2minus1.click(function (event) {
-		event.preventDefault()
-
-		let score = parseInt(basketballScore2.val())
-		score--
-		basketballScore2.val(score.toString())
-
-		let scoreObj = {}
-
-		scoreObj.basketballTeam1 = basketballScore1.val()
-		scoreObj.basketballTeam2 = basketballScore2.val()
+				scoreObj.basketballTeam1 = basketballScore1.val()
+				scoreObj.basketballTeam2 = basketballScore2.val()
+				break
+			}
+		} 
 
 		socket.emit('scoreboard_basketball', scoreObj)
 	})
