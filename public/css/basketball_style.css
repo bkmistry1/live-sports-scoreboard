@@ -33,6 +33,14 @@ input.header {
 	z-index: 1;
 }
 
+.uneditable:focus {
+	outline: none;
+}
+
+.uneditable {
+	cursor: default;
+}
+
 div.scoreboardOuterContainer {
 	display: flex;
 	justify-content: space-between;

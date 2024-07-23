@@ -49,6 +49,14 @@ input {
 	border: 0;
 }
 
+.uneditable:focus {
+	outline: none;
+}
+
+.uneditable {
+	cursor: default;
+}
+
 input.header {
 	position: absolute;
 	width: 45%;
