@@ -56,32 +56,36 @@
 		sendScoreToSocket()
 	})
 
-
-	$("#set_score_button").click(function (event) {
-		event.preventDefault()
-
-		const scoreTeam1 = $('#set_input_1')
-		const scoreTeam2 = $('#set_input_2')
-
-		score1.val(scoreTeam1.val())
-		score2.val(scoreTeam2.val())
-
+	$(".scoreboard").change(function sendUpdate() {
 		sendScoreToSocket()
+	})
 
-	});		
 
-	$("#set_team_button").click(function (event) {
-		event.preventDefault()
+	// $("#set_score_button").click(function (event) {
+	// 	event.preventDefault()
 
-		const teamName1 = $('#team_input_1').val()
-		const teamName2 = $('#team_input_2').val()
+	// 	const scoreTeam1 = $('#set_input_1')
+	// 	const scoreTeam2 = $('#set_input_2')
 
-		team1.val(teamName1)
-		team2.val(teamName2)
+	// 	score1.val(scoreTeam1.val())
+	// 	score2.val(scoreTeam2.val())
 
-		sendScoreToSocket()
+	// 	sendScoreToSocket()
 
-	});			
+	// });		
+
+	// $("#set_team_button").click(function (event) {
+	// 	event.preventDefault()
+
+	// 	const teamName1 = $('#team_input_1').val()
+	// 	const teamName2 = $('#team_input_2').val()
+
+	// 	team1.val(teamName1)
+	// 	team2.val(teamName2)
+
+	// 	sendScoreToSocket()
+
+	// });			
 
 	function sendScoreToSocket() {
 		let scoreObj = {}
