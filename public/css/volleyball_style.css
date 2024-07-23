@@ -8,6 +8,14 @@ body {
     background-repeat: no-repeat;
 }
 
+.uneditable:focus {
+	outline: none;
+}
+
+.uneditable {
+	cursor: default;
+}
+
 .scoreboard {
     text-align: center;
     color:black;
