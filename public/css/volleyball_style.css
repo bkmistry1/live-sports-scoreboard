@@ -45,14 +45,14 @@ body {
     position: absolute;
 }
 
-#score2 {
-    position: absolute;
-    left: 447px;
-}
-
 #score1 {
     position: absolute;
     left: 255px;
+}
+
+#score2 {
+    position: absolute;
+    left: 447px;
 }
 
 #team2 {
@@ -107,6 +107,35 @@ body {
     left: 162px;
 }
 
+.score_team_1 {
+    position: absolute;
+    left: 255px;
+}
+
+.score_team_2 {
+    position: absolute;
+    left: 447px;
+}
+
+button.reset {
+    position: absolute;
+    left: 355px;
+	padding: 8px 16px;
+	font-size: 14px;
+	border: 1px solid #e74c3c;
+	background-color: transparent;
+	border-radius: var(--buttonBorderRadius);
+	color: #e74c3c;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+button.reset:hover {
+	background-color: #e74c3c;
+	border-radius: 0;
+	color: white;
+	transition: all 0.3s ease-out;
+}
 
 /* 
     . for classes
