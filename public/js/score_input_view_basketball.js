@@ -12,7 +12,7 @@
 	const reset = $('#resetScore')
 
 	header.change(function updateHeader() {
-		socket.emit("updateHeader", header.val(), header.id)
+		socket.emit("updateHeader", header.val(), header[0].id)
 	})
 
 	$('.teamName').change(function updateTeamName() {
