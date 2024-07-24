@@ -15,8 +15,7 @@ body {
 	cursor: default;
 }
 
-.scoreboard {
-    text-align: center;
+.scoreboard {    
     color:black;
     font-size: 28px;
     font-family: Arial, Helvetica, sans-serif;
@@ -28,33 +27,42 @@ body {
 .team {
     width: 90px;
     height: 30px;    
+    position: absolute;
+    left: 100px;    
+    text-align: center;
 }
 
 #team1 {
-    position: absolute;
-    left: 100px;
     top: 12px;
 }
 
 #team2 {
-    position: absolute;
-    left: 100px;
     top: 58px;
 }
 
 .score {
+    position: absolute;
+    text-align: right;
     height: 30px;
-    width: 40px;
+    width: 50px;
+    left: 240px;
 }
 
-#score1 {
-    position: absolute;
-    left: 230px;
+#score1 {    
     top: 12px;    
 }
 
 #score2 {
-    position: absolute;
-    left: 230px;
     top: 58px;    
+}
+
+#info_banner {
+    position: absolute;
+    top: 101px;    
+    text-align: left;
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    background: transparent;
+    border: none;   
+    width: 273px; 
 }
