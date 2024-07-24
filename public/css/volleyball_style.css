@@ -73,6 +73,41 @@ body {
 }
 
 
+.button_score {
+	opacity: 0.95;
+	padding: 5px 20px;
+	font-size: 16px;
+	border: none;
+	border-radius: var(--buttonBorderRadius);
+	color: white;
+	background-color: #9d3f3f;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.button_set {
+	opacity: 0.95;
+	padding: 5px 20px;
+	font-size: 16px;
+	border: none;
+	border-radius: var(--buttonBorderRadius);
+	color: white;
+	background-color: #9d3f3f;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.set_team_2 {
+    position: absolute;
+    left: 545px;
+}
+
+.set_team_1 {
+    position: absolute;
+    left: 162px;
+}
+
+
 /* 
     . for classes
     # for id's
