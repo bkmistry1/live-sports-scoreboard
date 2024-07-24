@@ -12,10 +12,11 @@
 	const set2 = $('#set2')
 
 
-	$(":button").click(function (event) {
+	$(".button_score").click(function (event) {
 		event.preventDefault()
 
 		buttonId = this.id
+
 		buttonSplit = buttonId.split("_")
 
 		identifier = buttonSplit[2]
@@ -42,6 +43,33 @@
 
 	});	
 
+	$(".button_set").click( function (event) {
+		event.preventDefault()
+
+		buttonId = this.id
+		buttonSplit = buttonId.split("_")
+		identifier = buttonSplit[2]
+		teamSet = $("#set" + identifier)
+
+		let set = parseInt(teamSet.val())
+
+		if(buttonSplit[1] == "plus") {
+			set++
+		}
+		else {
+			set--
+		}
+
+		teamSet.val(set.toString())
+
+		let scoreObj = {}
+
+		scoreObj.set1 = set1.val()
+		scoreObj.set2 = set2.val()
+
+		sendScoreToSocket()
+	})
+
 	reset.click(function (event) {
 		event.preventDefault()
 
@@ -59,33 +87,7 @@
 	$(".scoreboard").change(function sendUpdate() {
 		sendScoreToSocket()
 	})
-
-
-	// $("#set_score_button").click(function (event) {
-	// 	event.preventDefault()
-
-	// 	const scoreTeam1 = $('#set_input_1')
-	// 	const scoreTeam2 = $('#set_input_2')
-
-	// 	score1.val(scoreTeam1.val())
-	// 	score2.val(scoreTeam2.val())
-
-	// 	sendScoreToSocket()
-
-	// });		
-
-	// $("#set_team_button").click(function (event) {
-	// 	event.preventDefault()
-
-	// 	const teamName1 = $('#team_input_1').val()
-	// 	const teamName2 = $('#team_input_2').val()
-
-	// 	team1.val(teamName1)
-	// 	team2.val(teamName2)
-
-	// 	sendScoreToSocket()
-
-	// });			
+		
 
 	function sendScoreToSocket() {
 		let scoreObj = {}
