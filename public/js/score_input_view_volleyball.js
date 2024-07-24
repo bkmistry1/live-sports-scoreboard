@@ -32,6 +32,8 @@
 			score--
 		}
 
+		score = checkIfNegativeNumber(score)
+		
 		teamScore.val(score.toString())
 
 		let scoreObj = {}
@@ -59,6 +61,8 @@
 		else {
 			set--
 		}
+
+		set = checkIfNegativeNumber(set)
 
 		teamSet.val(set.toString())
 
@@ -88,6 +92,16 @@
 		sendScoreToSocket()
 	})
 		
+
+	function checkIfNegativeNumber(number) {
+
+		if(number < 0) {
+			return 0
+		} 
+		else {
+			return number
+		}		
+	}
 
 	function sendScoreToSocket() {
 		let scoreObj = {}
