@@ -1,0 +1,60 @@
+:root {
+    --displayBlue: blue;
+}
+
+body {
+    background-image: url("/public/images/scoreboardSoccer.png");
+    background-repeat: no-repeat;
+}
+
+.uneditable:focus {
+	outline: none;
+}
+
+.uneditable {
+	cursor: default;
+}
+
+.scoreboard {
+    text-align: center;
+    color:black;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+}
+
+.team {
+    width: 90px;
+    height: 30px;    
+}
+
+#team1 {
+    position: absolute;
+    left: 100px;
+    top: 12px;
+}
+
+#team2 {
+    position: absolute;
+    left: 100px;
+    top: 58px;
+}
+
+.score {
+    height: 30px;
+    width: 40px;
+}
+
+#score1 {
+    position: absolute;
+    left: 230px;
+    top: 12px;    
+}
+
+#score2 {
+    position: absolute;
+    left: 230px;
+    top: 58px;    
+}
