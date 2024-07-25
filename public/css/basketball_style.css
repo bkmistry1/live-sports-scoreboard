@@ -27,9 +27,9 @@ input {
 
 input.header {
 	position: absolute;
-	width: 9%;
-	left: 23%;
-	top: 26vh;
+	width: 5%;
+	left: 9.7%;
+	top: 11vh;
 	z-index: 1;
 }
 
@@ -46,17 +46,12 @@ div.scoreboardOuterContainer {
 	flex-direction: column;
 	justify-content: space-between;
 	position: absolute;
-	width: 50%;
-	left: 13%;
-	top: 2.5vh;
+	left: 6%;
 	z-index: 1;
 }
 
 div.scoreboardOuterContainer > div {
 	display: flex;
-	width: 43%;
-	height: 100px;
-	justify-content: space-between;
 	z-index: 1;
 }
 
@@ -77,19 +72,16 @@ input.basketballTeam2 {
 
 #basketballTeam1,
 #basketballTeam2 {
-	width: 15vw;
+	width: 5.5vw;
 }
 
 #basketballScore1,
 #basketballScore2 {
-	width: 5vw;
+	width: 2vw;
 	text-align: center;
 }
 
 .scoreboard-images {
-	max-width: 95vw;
-	height: 35vh;
-	left: 2%;
 	z-index: 0;
 }
 
@@ -104,9 +96,9 @@ input.basketballTeam2 {
 	justify-content: space-between;
 	align-items: center;
 	width: 10%;
-	height: 125px;
-	top: -30vh;
-	left: 33vw;
+	height: 75px;
+	left: 15vw;
+	top: -14.5vh;
 	z-index: 2;
 }
 
@@ -117,8 +109,8 @@ input.basketballTeam2 {
 
 button.reset {
 	position: relative;
-	left: 36vw;
-	top: -23vh;
+	left: 18vw;
+	top: -13.5vh;
 }
 
 .scoreInputButtons button {
