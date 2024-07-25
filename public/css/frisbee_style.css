@@ -28,7 +28,6 @@ div.scoreboardOuterContainer {
 }
 
 div.scoreboardOuterContainer > div {
-	background-color: pink;
 	display: flex;
 	width: 250px;
 	height: 100%;
