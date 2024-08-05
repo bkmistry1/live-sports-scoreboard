@@ -6,7 +6,7 @@ const basketballScoreboardRoutes = require('./scoreboard_view_basketball')
 const basketballScoreInputRoutes = require('./score_input_view_basketball')
 const soccerScoreboardRoutes = require('./scoreboard_view_soccer')
 const soccerScoreInputRoutes = require('./score_input_view_soccer')
-const liveChatTest = require('./live_chat')
+const liveChatRouter = require('./live_chat')
 
 const constructorMethod = app => {
 	app.get('/', async (req, res) => {
@@ -24,7 +24,7 @@ const constructorMethod = app => {
 	app.use('/score_input_view_basketball', basketballScoreInputRoutes)
 	app.use('/scoreboard_view_soccer', soccerScoreboardRoutes)
 	app.use('/score_input_view_soccer', soccerScoreInputRoutes)
-	app.use('/live-video', liveChatTest)
+	app.use('/live-chat', liveChatRouter)
 
 	app.use('*', (req, res) => {
 		res.status(404).json({ error: 'Not found' })
