@@ -51,7 +51,7 @@ router.get('/check-token', async (req, res) => {
 })
 
 // Route to get live video details
-router.get('/live-video/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
 	try {
 		const url = `https://graph.facebook.com/${req.params.id}/comments?access_token=${ACCESS_TOKEN}`
 		const result = await makeRequest(url, 'GET')
