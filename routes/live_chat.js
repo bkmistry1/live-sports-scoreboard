@@ -53,7 +53,7 @@ router.get('/check-token', async (req, res) => {
 // Route to get live video details
 router.get('/:id', async (req, res) => {
 	try {
-		const url = `https://graph.facebook.com/${req.params.id}/comments?access_token=${ACCESS_TOKEN}`
+		const url = `https://graph.facebook.com/${req.params.id}/comments?access_token=${ACCESS_TOKEN}&fields=from{id,name,picture},message,created_time`
 		const result = await makeRequest(url, 'GET')
 		return res.json(result)
 	} catch (e) {
