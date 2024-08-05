@@ -7,6 +7,13 @@ const dotEnv = require('dotenv').config().parsed
 const ACCESS_TOKEN = dotEnv.accessToken
 const API_VERSION = 'v20.0'
 
+router.get('/:id', async (req, res) => {
+	res.render('partials/live_chat', {
+		title: 'Live Chat',
+		shortcode: 'live_chat',
+		videoId: req.params.id,
+	})
+})
 // Helper function to make HTTPS requests
 function makeRequest(url, method, data = null) {
 	return new Promise((resolve, reject) => {
@@ -51,7 +58,7 @@ router.get('/check-token', async (req, res) => {
 })
 
 // Route to get live video details
-router.get('/:id', async (req, res) => {
+router.get('/:id/comments', async (req, res) => {
 	try {
 		const url = `https://graph.facebook.com/${req.params.id}/comments?access_token=${ACCESS_TOKEN}&fields=from{id,name,picture},message,created_time`
 		const result = await makeRequest(url, 'GET')

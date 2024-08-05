@@ -24,7 +24,7 @@ const constructorMethod = app => {
 	app.use('/score_input_view_basketball', basketballScoreInputRoutes)
 	app.use('/scoreboard_view_soccer', soccerScoreboardRoutes)
 	app.use('/score_input_view_soccer', soccerScoreInputRoutes)
-	app.use('/live-chat', liveChatRouter)
+	app.use('/live_chat', liveChatRouter)
 
 	app.use('*', (req, res) => {
 		res.status(404).json({ error: 'Not found' })
