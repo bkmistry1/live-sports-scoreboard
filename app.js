@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('updateTeamName', (value, id) => {
-      let data = {}
+      const data = {}
       data.value = value
       data.id = id
       
@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('updateTeamScore', (value, id) => {
-      let data = {}
+      const data = {}
       data.value = value
       data.id = id
       
@@ -66,7 +66,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('updateHeader', (value, id) => {
-      let data = {}
+      const data = {}
       data.value = value
       data.id = id
 
