@@ -1,29 +1,29 @@
-;(function ($) {
-	const socket = io()
+(($) => {
+	const socket = io();
 
-	socket.on('score_frisbee', scoreObj => {
-		let frisbeeScore1 = $('#frisbeeScore1')
-		let frisbeeScore2 = $('#frisbeeScore2')
+	socket.on("score_frisbee", (scoreObj) => {
+		const frisbeeScore1 = $("#frisbeeScore1");
+		const frisbeeScore2 = $("#frisbeeScore2");
 
-		frisbeeScore1.val(scoreObj.frisbeeTeam1)
-		frisbeeScore2.val(scoreObj.frisbeeTeam2)
-	})
+		frisbeeScore1.val(scoreObj.frisbeeTeam1);
+		frisbeeScore2.val(scoreObj.frisbeeTeam2);
+	});
 
-	socket.on('teamNameUpdate', (data) => {
-		let frisTeam = $(`#${data.id}`)
+	socket.on("teamNameUpdate", (data) => {
+		const frisTeam = $(`#${data.id}`);
 
-		frisTeam.val(data.value)
-	})
+		frisTeam.val(data.value);
+	});
 
-	socket.on('updateHeader', data => {
-		const frisbeeHeader = $(`#${data.id}`)
-		
-		frisbeeHeader.val(data.value)
-	})
+	socket.on("updateHeader", (data) => {
+		const frisbeeHeader = $(`#${data.id}`);
 
-	socket.on('teamScoreUpdate', (data) => {
-		let frisbeeScore = $(`#${data.id}`)
+		frisbeeHeader.val(data.value);
+	});
 
-		frisbeeScore.val(data.value)
-	})
-})(window.jQuery)
+	socket.on("teamScoreUpdate", (data) => {
+		const frisbeeScore = $(`#${data.id}`);
+
+		frisbeeScore.val(data.value);
+	});
+})(window.jQuery);

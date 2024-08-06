@@ -1,95 +1,88 @@
-;(function ($) {
-	const socket = io()
-	const socketStringIdentifier = "scoreboard_soccer"
+(($) => {
+	const socket = io();
+	const socketStringIdentifier = "scoreboard_soccer";
 
-	const reset = $('#resetScore')
+	const reset = $("#resetScore");
 
-	const score1 = $('#score1')
-	const score2 = $('#score2')
-	const team1 = $('#team1')
-	const team2 = $('#team2')
-	const info = $('#info_banner')
-
+	const score1 = $("#score1");
+	const score2 = $("#score2");
+	const team1 = $("#team1");
+	const team2 = $("#team2");
+	const info = $("#info_banner");
 
 	$(".button_score").click(function (event) {
-		event.preventDefault()
+		event.preventDefault();
 
-		buttonId = this.id
+		buttonId = this.id;
 
-		buttonSplit = buttonId.split("_")
+		buttonSplit = buttonId.split("_");
 
-		identifier = buttonSplit[2]
+		identifier = buttonSplit[2];
 
-		teamScore = $("#score" + identifier)
+		teamScore = $(`#score${identifier}`);
 
-		let score = parseInt(teamScore.val())
+		let score = Number.parseInt(teamScore.val());
 
-		if(buttonSplit[1] == "plus") {
-			score++
+		if (buttonSplit[1] === "plus") {
+			score++;
+		} else {
+			score--;
 		}
-		else {
-			score--
-		}
 
-		score = checkIfNegativeNumber(score)
-		
-		teamScore.val(score.toString())
+		score = checkIfNegativeNumber(score);
 
-		let scoreObj = {}
+		teamScore.val(score.toString());
 
-		scoreObj.team1 = score1.val()
-		scoreObj.team2 = score2.val()
+		const scoreObj = {};
 
-		sendScoreToSocket()
+		scoreObj.team1 = score1.val();
+		scoreObj.team2 = score2.val();
 
-	});	
+		sendScoreToSocket();
+	});
 
-	info.change(function (event) {
-		event.preventDefault()
-		sendScoreToSocket()
-	})
+	info.change((event) => {
+		event.preventDefault();
+		sendScoreToSocket();
+	});
 
-	reset.click(function (event) {
-		event.preventDefault()
+	reset.click((event) => {
+		event.preventDefault();
 
-		score1.val('0')
-		score2.val('0')
+		score1.val("0");
+		score2.val("0");
 
-		let scoreObj = {}
+		const scoreObj = {};
 
-		scoreObj.team1 = 0
-		scoreObj.team2 = 0
+		scoreObj.team1 = 0;
+		scoreObj.team2 = 0;
 
-		sendScoreToSocket()
-	})
+		sendScoreToSocket();
+	});
 
 	$(".scoreboard").change(function sendUpdate() {
-		sendScoreToSocket()
-	})
-		
+		sendScoreToSocket();
+	});
 
 	function checkIfNegativeNumber(number) {
+		if (number < 0) {
+			return 0;
+		}
 
-		if(number < 0) {
-			return 0
-		} 
-		else {
-			return number
-		}		
+		return number;
 	}
 
 	function sendScoreToSocket() {
-		let scoreObj = {}
+		const scoreObj = {};
 
-		scoreObj.team1 = score1.val()
-		scoreObj.team2 = score2.val()
+		scoreObj.team1 = score1.val();
+		scoreObj.team2 = score2.val();
 
-		scoreObj.teamName1 = team1.val()
-		scoreObj.teamName2 = team2.val()
+		scoreObj.teamName1 = team1.val();
+		scoreObj.teamName2 = team2.val();
 
-		scoreObj.info = info.val()
+		scoreObj.info = info.val();
 
-		socket.emit(socketStringIdentifier, scoreObj)
+		socket.emit(socketStringIdentifier, scoreObj);
 	}
-
-})(window.jQuery)
+})(window.jQuery);
