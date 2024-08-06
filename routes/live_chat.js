@@ -64,15 +64,22 @@ router.get('/:id/comments', async (req, res) => {
 		const result = await makeRequest(url, 'GET')
 		return res.json(result)
 	} catch (e) {
-		if (e.message.includes('Object with ID') && e.message.includes('does not exist')) {
-			return res.status(404).json({ error: 'Live video not found. Please check the ID.' })
-		} else if (e.message.includes('missing permissions')) {
+		if (
+			e.message.includes("Object with ID") &&
+			e.message.includes("does not exist")
+		) {
+			return res
+				.status(404)
+				.json({ error: "Live video not found. Please check the ID." });
+		}
+		if (e.message.includes("missing permissions")) {
 			return res
 				.status(403)
-				.json({ error: 'Insufficient permissions. Please check your access token.' })
-		} else {
-			return res.status(500).json({ error: e.message })
+				.json({
+					error: "Insufficient permissions. Please check your access token.",
+				});
 		}
+			return res.status(500).json({ error: e.message });
 	}
 })
 

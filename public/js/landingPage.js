@@ -1,11 +1,11 @@
-;(function ($) {
-	const submitButton = $('#submitSportChoice')
+(($) => {
+	const submitButton = $("#submitSportChoice");
 
-	submitButton.click(function (event) {
-		event.preventDefault()
+	submitButton.click((event) => {
+		event.preventDefault();
 
-		var selectedSport = $('input[name="sport"]:checked').val()
+		const selectedSport = $('input[name="sport"]:checked').val();
 
-		window.location.href = `/scoreboard_view_${selectedSport}`
-	})
-})(window.jQuery)
+		window.location.href = `/scoreboard_view_${selectedSport}`;
+	});
+})(window.jQuery);

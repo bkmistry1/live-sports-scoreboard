@@ -4,12 +4,12 @@ const { createServer } = require('node:http');
 // const { join } = require('node:path');
 const { Server } = require('socket.io');
 
-const static = express.static(__dirname + '/public');
+const static = express.static(`${__dirname}/public`);
 
 const app = express();
 const server = createServer(app);
 
-const serverUrl = dotEnv.baseUrl + ":" + dotEnv.httpPort;
+const serverUrl = `${dotEnv.baseUrl}:${dotEnv.httpPort}`;
 
 const io = new Server(server,
     {
@@ -75,5 +75,5 @@ io.on('connection', (socket) => {
   });
 
 server.listen(dotEnv.httpPort, () => {
-  console.log('server running at ' + serverUrl);
+  console.log(`server running at ${serverUrl}`);
 });
