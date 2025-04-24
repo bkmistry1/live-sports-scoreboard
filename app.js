@@ -4,12 +4,12 @@ const { createServer } = require('node:http');
 // const { join } = require('node:path');
 const { Server } = require('socket.io');
 
-const static = express.static(__dirname + '/public');
+const static = express.static(`${__dirname}/public`);
 
 const app = express();
 const server = createServer(app);
 
-const serverUrl = dotEnv.baseUrl + ":" + dotEnv.httpPort;
+const serverUrl = `${dotEnv.baseUrl}:${dotEnv.httpPort}`;
 
 const io = new Server(server,
     {
@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('updateTeamName', (value, id) => {
-      let data = {}
+      const data = {}
       data.value = value
       data.id = id
       
@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('updateTeamScore', (value, id) => {
-      let data = {}
+      const data = {}
       data.value = value
       data.id = id
       
@@ -66,7 +66,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on('updateHeader', (value, id) => {
-      let data = {}
+      const data = {}
       data.value = value
       data.id = id
 
@@ -75,5 +75,5 @@ io.on('connection', (socket) => {
   });
 
 server.listen(dotEnv.httpPort, () => {
-  console.log('server running at ' + serverUrl);
+  console.log(`server running at ${serverUrl}`);
 });

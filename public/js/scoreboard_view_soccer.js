@@ -1,24 +1,23 @@
-;(function ($) {
-	var baseUrl = window.location.origin
+(($) => {
+	const baseUrl = window.location.origin;
 
-	const socket = io(baseUrl)
+	const socket = io(baseUrl);
 
-	socket.on('score_soccer', scoreObj => {
-		let score1 = $('#score1')
-		let score2 = $('#score2')
-		
-		let team1 = $('#team1')
-		let team2 = $('#team2')		
+	socket.on("score_soccer", (scoreObj) => {
+		const score1 = $("#score1");
+		const score2 = $("#score2");
 
-		let info = $('#info_banner')
+		const team1 = $("#team1");
+		const team2 = $("#team2");
 
-		score1.val(scoreObj.team1)
-		score2.val(scoreObj.team2)
+		const info = $("#info_banner");
 
-		team1.val(scoreObj.teamName1)
-		team2.val(scoreObj.teamName2)		
+		score1.val(scoreObj.team1);
+		score2.val(scoreObj.team2);
 
-		info.val(scoreObj.info)
+		team1.val(scoreObj.teamName1);
+		team2.val(scoreObj.teamName2);
 
-	})
-})(window.jQuery)
+		info.val(scoreObj.info);
+	});
+})(window.jQuery);
