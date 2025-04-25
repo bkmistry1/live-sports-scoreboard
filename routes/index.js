@@ -7,6 +7,8 @@ const basketballScoreInputRoutes = require('./score_input_view_basketball')
 const soccerScoreboardRoutes = require('./scoreboard_view_soccer')
 const soccerScoreInputRoutes = require('./score_input_view_soccer')
 const liveChatRouter = require('./live_chat')
+const yoloboxConnectionRoutes = require('./yolobox_connection_view')
+
 
 const constructorMethod = app => {
 	app.get('/', async (req, res) => {
@@ -25,6 +27,7 @@ const constructorMethod = app => {
 	app.use('/scoreboard_view_soccer', soccerScoreboardRoutes)
 	app.use('/score_input_view_soccer', soccerScoreInputRoutes)
 	app.use('/live_chat', liveChatRouter)
+	app.use('/yolobox_connection', yoloboxConnectionRoutes)
 
 	app.use('*', (req, res) => {
 		res.status(404).json({ error: 'Not found' })
