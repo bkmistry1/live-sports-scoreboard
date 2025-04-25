@@ -122,6 +122,64 @@ let exportedMethods = {
           return;
     },    
 
+    async getMixerList() {
+      let finalData = null
+      var ws = new websocket('ws://'+yoloboxIp+':8887/remote/controller/authenticate')
+
+      ws.on('open', () => {
+        console.log('Connected to WebSocket server');
+        var wss = new websocket('ws://'+yoloboxIp+':8887/remote/controller/getMixerList')
+
+        wss.on('open', () => {
+          console.log('Connected to WebSocket server');
+          });
+          
+        wss.on('message', data => {
+          console.log('Received:', data.toString());
+          finalData = JSON.parse(data.toString())
+        });
+        
+        wss.on('close', () => {
+          console.log('Disconnected from WebSocket server');
+        });
+        
+        wss.on('error', error => {
+          console.error('WebSocket error:', error);
+        });		
+        
+        });
+        
+      ws.on('message', asdf => {
+        console.log('Received:', asdf.toString());
+      });
+        
+      ws.on('close', () => {
+        console.log('Disconnected from WebSocket server');
+      });
+      
+      ws.on('error', error => {
+        console.error('WebSocket error:', error);
+      });		
+
+          let timeoutCount = 0
+          while(finalData == null) {
+              await this.sleep(1000)
+              // console.log("timeout")
+              timeoutCount++
+              if(timeoutCount > 15) {
+                  console.log("timed Out")
+                  return
+              }
+          }
+
+          mixerSources = finalData["data"]["result"]
+          await this.registerButtonsForCompanionMaterial(mixerSources)
+
+          ws.close()
+
+          return;
+    },       
+
     async sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     },
@@ -194,7 +252,42 @@ let exportedMethods = {
       }
 
       return
-  },    
+    },
+
+    async registerButtonsForCompanionMaterial(materialSources) {
+
+      index = 0;
+      
+      for(let i=0; i<materialSources.length; i++) {
+          buttonValue = materialSources[i]["mixerName"]
+          idValue = materialSources[i]["id"]
+          index++;
+
+          const params = {
+              value: buttonValue,
+          }
+
+          const urlWithParams = url.format({
+              pathname: "/api/custom-variable/soundBtn"+index+"/value",
+              query: params,
+          })
+
+          await this.postRequestForCustomVariableButtons(urlWithParams)
+
+          const params2 = {
+              value: idValue,
+          }
+
+          const urlWithParams2 = url.format({
+              pathname: "/api/custom-variable/soundId"+index+"/value",
+              query: params2,
+          })            
+          
+          await this.postRequestForCustomVariableButtons(urlWithParams2)
+      }
+
+      return
+    },    
 
     async postRequestForCustomVariableButtons(urlWithParams) {
         let path = urlWithParams
