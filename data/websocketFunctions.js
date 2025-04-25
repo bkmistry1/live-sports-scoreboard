@@ -1,16 +1,18 @@
 const http = require('http')
 var websocket = require('ws')
 const url = require('url')
+const yoloboxIp = "192.168.1.117"
+
 
 let exportedMethods = {
 
 	async getDirectorList() {
 		let finalData = null
-		var ws = new websocket('ws://192.168.1.120:8887/remote/controller/authenticate')
+		var ws = new websocket('ws://'+yoloboxIp+':8887/remote/controller/authenticate')
 
 		ws.on('open', () => {
 			console.log('Connected to WebSocket server');
-			var wss = new websocket('ws://192.168.1.120:8887/remote/controller/getDirectorList')
+			var wss = new websocket('ws://'+yoloboxIp+':8887/remote/controller/getDirectorList')
 
 			wss.on('open', () => {
 				console.log('Connected to WebSocket server');
@@ -43,9 +45,15 @@ let exportedMethods = {
 			console.error('WebSocket error:', error);
 		});		
 
+        let timeoutCount = 0
         while(finalData == null) {
             await this.sleep(1000)
-            console.log("timeout")            
+            // console.log("timeout")
+            timeoutCount++
+            if(timeoutCount > 15) {
+                console.log("timed Out")
+                return
+            }
         }
 
         videoSources = finalData["data"]["result"]
