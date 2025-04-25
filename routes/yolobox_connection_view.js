@@ -7,6 +7,7 @@ router.get('/', async (req, res) => {
 	try {
 		await websocketFunctions.getDirectorList()
 		await websocketFunctions.getMaterialList()
+		await websocketFunctions.getMixerList()
 
 		return res.json({
 			data: 'nothing',
