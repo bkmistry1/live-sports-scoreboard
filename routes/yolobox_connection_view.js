@@ -6,6 +6,7 @@ const websocketFunctions = data.websocketFunctions;
 router.get('/', async (req, res) => {	
 	try {
 		await websocketFunctions.getDirectorList()
+		await websocketFunctions.getMaterialList()
 
 		return res.json({
 			data: 'nothing',
