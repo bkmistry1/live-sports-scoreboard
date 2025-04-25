@@ -44,7 +44,7 @@ let exportedMethods = {
 		});		
 
         while(finalData == null) {
-            await this.sleep(3000)
+            await this.sleep(1000)
             console.log("timeout")            
         }
 
