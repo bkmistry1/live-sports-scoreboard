@@ -1,5 +1,6 @@
-const http = require('https')
+const http = require('http')
 var websocket = require('ws')
+const url = require('url')
 
 let exportedMethods = {
 
@@ -47,17 +48,80 @@ let exportedMethods = {
             console.log("timeout")            
         }
 
+        videoSources = finalData["data"]["result"]
+        await this.registerButtonsForCompanion(videoSources)
+
         ws.close()
 
-        return finalData;
+        return;
 	},
 
     async sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
-    }    
+    },
 
+    async registerButtonsForCompanion(directorListData) {
 
-    
+        index = 0;
+        
+        for(let i=0; i<directorListData.length; i++) {
+            buttonValue = directorListData[i]["directorName"]
+            idValue = directorListData[i]["id"]
+            index++;
+
+            const params = {
+                value: buttonValue,
+            }
+
+            const urlWithParams = url.format({
+                pathname: "/api/custom-variable/button"+index+"/value",
+                query: params,
+            })
+
+            await this.postRequestForCustomVariableButtons(urlWithParams)
+
+            const params2 = {
+                value: idValue,
+            }
+
+            const urlWithParams2 = url.format({
+                pathname: "/api/custom-variable/id"+index+"/value",
+                query: params2,
+            })            
+            
+            await this.postRequestForCustomVariableButtons(urlWithParams2)
+        }
+
+        return
+    },
+
+    async postRequestForCustomVariableButtons(urlWithParams) {
+        let path = urlWithParams
+              
+        const options = {
+          hostname: '127.0.0.1',
+          port: 8000,
+          path: path,
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        };
+        
+        const req = http.request(options, res => {
+          let responseData = '';
+          res.on('data', chunk => {
+            responseData += chunk;
+          });              
+        });
+        
+        req.on('error', error => {
+          console.error(error);
+        });
+        
+        req.end();        
+    }
+
 };
 
 module.exports = exportedMethods;

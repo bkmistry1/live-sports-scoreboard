@@ -5,10 +5,10 @@ const websocketFunctions = data.websocketFunctions;
 
 router.get('/', async (req, res) => {	
 	try {
-		const finalData = await websocketFunctions.getDirectorList()
+		await websocketFunctions.getDirectorList()
 
 		return res.json({
-			"data": finalData
+			data: 'nothing',
 		})
 	} catch (e) {
 		console.log(e)
