@@ -37,6 +37,10 @@ io.on('connection', (socket) => {
       io.emit('score_volleyball', scoreObj);
     });
 
+    socket.on('scoreboard_volleyball_change', (scoreObj) => {
+      io.emit('score_change', scoreObj);
+    });    
+
     socket.on('scoreboard_soccer', (scoreObj) => {
       io.emit('score_soccer', scoreObj);
     });    

@@ -11,6 +11,22 @@
 	const set1 = $("#set1");
 	const set2 = $("#set2");
 
+	const baseUrl = window.location.origin;
+	const socket1 = io(baseUrl);
+
+	socket1.on("score_change", (companionObj) => {
+		const scoreToChange = $("#"+companionObj.score)
+
+		let scoreValue = parseInt(scoreToChange.val())
+		scoreValue += parseInt(companionObj.value)
+		
+		if(scoreValue < 0) {
+			scoreValue = 0;
+		}
+
+		scoreToChange.val(scoreValue)
+	});
+
 	$(".button_score").click(function (event) {
 		event.preventDefault();
 
@@ -109,5 +125,30 @@
 		scoreObj.set2 = set2.val();
 
 		socket.emit(socketStringIdentifier, scoreObj);
+		updateScoreOnCompanion(scoreObj)
+	}
+
+	function updateScoreOnCompanion(scoreObj) {
+		for(let key in scoreObj) {
+			// console.log(key)
+			// console.log(scoreObj[key])
+
+			try {
+				let req = {
+					method: 'POST',
+					url: 'http://127.0.0.1:8000/api/custom-variable/'+key+'/value?value=' + scoreObj[key].toString(),
+					contentType: 'application/json',
+					// data: JSON.stringify({
+					//     team1: team1,
+					// })
+				};
+				$.ajax(req).then(function (res) {
+					
+				});
+			} 
+			catch (e) {
+				console.log(e)
+			}				
+		}			
 	}
 })(window.jQuery);
