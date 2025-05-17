@@ -173,7 +173,7 @@ let exportedMethods = {
           }
 
           mixerSources = finalData["data"]["result"]
-          await this.registerButtonsForCompanionMaterial(mixerSources)
+          await this.registerButtonsForCompanionMixer(mixerSources)
 
           ws.close()
 
@@ -254,7 +254,7 @@ let exportedMethods = {
       return
     },
 
-    async registerButtonsForCompanionMaterial(materialSources) {
+    async registerButtonsForCompanionMixer(materialSources) {
 
       index = 0;
       
