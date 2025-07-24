@@ -8,4 +8,4 @@ npm -i
 npm start
 
 Server running on:
-    http://localhost:<port-indicated-in-env-file>
+    http://localhost:{port-indicated-in-env-file}
