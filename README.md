@@ -2,7 +2,10 @@
 
 ## Install node packages 
 
-run npm -i
+npm -i
 
 ## Start the web server
 npm start
+
+Server running on:
+    http://localhost:<port-indicated-in-env-file>
