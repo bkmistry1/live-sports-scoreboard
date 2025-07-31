@@ -4,6 +4,8 @@
 	const header = $("#basketballHeader");
 	const basketballScore1 = $("#basketballScore1");
 	const basketballScore2 = $("#basketballScore2");
+	const basketballTeam1 = $("#basketballTeam1");
+	const basketballTeam2 = $("#basketballTeam2");
 
 	const basketballTeam1plus1 = $("#basketballTeam1plus1");
 	const basketballTeam2plus1 = $("#basketballTeam2plus1");
@@ -12,15 +14,15 @@
 	const reset = $("#resetScore");
 
 	header.change(function updateHeader() {
-		socket.emit("updateHeader", header.val(), header[0].id);
+		sendScoreToSocket();
 	});
 
 	$(".teamName").change(function updateTeamName() {
-		socket.emit("updateTeamName", $(this).val(), $(this)[0].id);
+		sendScoreToSocket();
 	});
 
 	$(".teamScore").change(function updateTeamScore() {
-		socket.emit("updateTeamScore", $(this).val(), $(this)[0].id);
+		sendScoreToSocket();
 	});
 
 	$(":button").click(function (event) {
@@ -28,55 +30,51 @@
 
 		const buttonId = $(this).attr("id");
 
-		const scoreObj = {};
-
 		switch (buttonId) {
 			case reset.attr("id"): {
 				basketballScore1.val("0");
 				basketballScore2.val("0");
-
-				scoreObj.basketballTeam1 = 0;
-				scoreObj.basketballTeam2 = 0;
 				break;
 			}
 			case basketballTeam1plus1.attr("id"): {
 				let score = Number.parseInt(basketballScore1.val());
 				score++;
 				basketballScore1.val(score.toString());
-
-				scoreObj.basketballTeam1 = basketballScore1.val();
-				scoreObj.basketballTeam2 = basketballScore2.val();
 				break;
 			}
 			case basketballTeam2plus1.attr("id"): {
 				let score = Number.parseInt(basketballScore2.val());
 				score++;
 				basketballScore2.val(score.toString());
-
-				scoreObj.basketballTeam1 = basketballScore1.val();
-				scoreObj.basketballTeam2 = basketballScore2.val();
 				break;
 			}
 			case basketballTeam1minus1.attr("id"): {
 				let score = Number.parseInt(basketballScore1.val());
 				score--;
 				basketballScore1.val(score.toString());
-
-				scoreObj.basketballTeam1 = basketballScore1.val();
-				scoreObj.basketballTeam2 = basketballScore2.val();
 				break;
 			}
 			case basketballTeam2minus1.attr("id"): {
 				let score = Number.parseInt(basketballScore2.val());
 				score--;
 				basketballScore2.val(score.toString());
-
-				scoreObj.basketballTeam1 = basketballScore1.val();
-				scoreObj.basketballTeam2 = basketballScore2.val();
 				break;
 			}
 		}
 
-		socket.emit("scoreboard_basketball", scoreObj);
+		sendScoreToSocket();
 	});
+
+	function sendScoreToSocket() {
+		const scoreObj = {};
+
+		scoreObj.header = header.val();
+		scoreObj.score1 = basketballScore1.val();
+		scoreObj.score2 = basketballScore2.val();
+		scoreObj.teamName1 = basketballTeam1.val();
+		scoreObj.teamName2 = basketballTeam2.val();
+
+		socket.emit("scoreboard_basketball", scoreObj);
+	}
+
 })(window.jQuery);

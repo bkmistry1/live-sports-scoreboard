@@ -83,40 +83,61 @@ input.basketballTeam2 {
 	z-index: 0;
 }
 
-/* Need to create logged-in class? */
+.scoreboard-view-basketball {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start; 
+	justify-content: flex-start; 
+	gap: 24px; 
+}
+
+.marquee-container {
+  	display: flex ;
+	overflow: hidden ;
+	white-space: nowrap ;
+	position: absolute;
+	width: 100px;
+	left: 195px;
+	top: 108px;
+}
+
+.marquee-text {
+	animation-duration: 4s ;
+	animation-iteration-count: infinite ;
+	animation-name: marquee-content ;
+	animation-timing-function: linear ;
+	padding: 5px 15px 5px 15px ;
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes marquee-content {
+	from {
+		transform: translateX( 0% );
+	}
+	to {
+		transform: translateX( -100% );
+	}
+}
 
 /* Button Styling */
 
 .button-container {
+	margin: 10px;
 	display: flex;
-	flex-direction: column;
-	position: relative;
-	justify-content: space-between;
-	align-items: center;
-	width: 10%;
-	height: 75px;
-	left: 15vw;
-	top: -14.5vh;
-	z-index: 2;
+    flex-direction: column;
 }
 
-.scoreInputButtons {
-	display: flex;
-	gap: 10px;
-}
-
-button.reset {
-	position: relative;
-	left: 18vw;
-	top: -13.5vh;
+button {
+	padding: 5px 20px;
+	margin: 5px;
+	font-size: 16px;
+	border: none;
+	border-radius: var(--buttonBorderRadius);
 }
 
 .scoreInputButtons button {
 	opacity: 0.95;
-	padding: 5px 20px;
-	font-size: 16px;
-	border: none;
-	border-radius: var(--buttonBorderRadius);
 	color: white;
 	background-color: #9d3f3f;
 	cursor: pointer;
@@ -125,12 +146,12 @@ button.reset {
 
 #basketballTeam1Buttons button:hover {
 	opacity: 0.95;
-	background-color: #233fc6;
+	background-color: #fb5a02;
 }
 
 #basketballTeam2Buttons button:hover {
 	opacity: 0.95;
-	background-color: #fb5a02;
+	background-color: #233fc6;
 }
 
 button.reset {
