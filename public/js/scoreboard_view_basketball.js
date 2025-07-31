@@ -6,26 +6,28 @@
 	socket.on("score_basketball", (scoreObj) => {
 		const basketballScore1 = $("#basketballScore1");
 		const basketballScore2 = $("#basketballScore2");
+		const basketballTeam1 = $("#basketballTeam1");
+		const basketballTeam2 = $("#basketballTeam2");
 
-		basketballScore1.val(scoreObj.basketballTeam1);
-		basketballScore2.val(scoreObj.basketballTeam2);
+		updateHeader(scoreObj.header);
+		basketballScore1.val(scoreObj.score1);
+		basketballScore2.val(scoreObj.score2);
+		basketballTeam1.val(scoreObj.teamName1);
+		basketballTeam2.val(scoreObj.teamName2);
 	});
 
-	socket.on("teamNameUpdate", (data) => {
-		const basketballTeam = $(`#${data.id}`);
+	function updateHeader(headerValue) {
+		const basketballHeaders = $(".basketballHeader");
+		basketballHeaders.each(function() {
+			const $header = $(this);
+			$header.text(headerValue);
 
-		basketballTeam.val(data.value);
-	});
-
-	socket.on("updateHeader", (data) => {
-		const basketballHeader = $(`#${data.id}`);
-
-		basketballHeader.val(data.value);
-	});
-
-	socket.on("teamScoreUpdate", (data) => {
-		const basketballScore = $(`#${data.id}`);
-
-		basketballScore.val(data.value);
-	});
+			// Adjust marquee animation-duration based on text length
+			const textLength = headerValue.length;
+			const baseDuration = 4; 
+			const perCharDuration = 0.15; 
+			const duration = Math.max(baseDuration, textLength * perCharDuration);
+			$header.css('animation-duration', `${duration}s`);
+		});
+	}
 })(window.jQuery);

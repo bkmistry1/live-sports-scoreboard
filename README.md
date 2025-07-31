@@ -2,7 +2,7 @@
 
 ## Install node packages 
 
-npm -i
+npm i
 
 ## Start the web server
 npm start
