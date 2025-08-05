@@ -2,12 +2,6 @@
     --displayBlue: blue;
 }
 
-
-body {
-    background-image: url("/public/images/scoreboardvball.png");
-    background-repeat: no-repeat;
-}
-
 .uneditable:focus {
 	outline: none;
 }
@@ -38,40 +32,9 @@ body {
 
 .set {
     width: 75px;
-    height: 65px;    
+    height: 65px; 
+    padding-top: 20px;   
 }
-
-#team1 {
-    position: absolute;
-}
-
-#score1 {
-    position: absolute;
-    left: 255px;
-}
-
-#score2 {
-    position: absolute;
-    left: 447px;
-}
-
-#team2 {
-    position: absolute;
-    left: 638px;
-}
-
-#set1 {
-    position: absolute;
-    left: 162px;
-    top: 20px;
-}
-
-#set2 {
-    position: absolute;
-    left: 545px;    
-    top: 20px;
-}
-
 
 .button_score {
 	opacity: 0.95;
@@ -97,29 +60,7 @@ body {
 	transition: background-color 0.3s ease;
 }
 
-.set_team_2 {
-    position: absolute;
-    left: 545px;
-}
-
-.set_team_1 {
-    position: absolute;
-    left: 162px;
-}
-
-.score_team_1 {
-    position: absolute;
-    left: 255px;
-}
-
-.score_team_2 {
-    position: absolute;
-    left: 447px;
-}
-
 button.reset {
-    position: absolute;
-    left: 355px;
 	padding: 8px 16px;
 	font-size: 14px;
 	border: 1px solid #e74c3c;
@@ -135,6 +76,67 @@ button.reset:hover {
 	border-radius: 0;
 	color: white;
 	transition: all 0.3s ease-out;
+}
+
+.scoreboard-view-volleyball {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreboard-img-container {
+    background-image: url("/public/images/scoreboardvball.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Adjust width and height to the background image's */
+    width: 788px;     
+    height: 88px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#team1 {
+    margin-left: 5px;
+}
+
+#team2 {
+    margin-right: 5px;
+}
+
+#score1 {
+    margin-right: 50px;
+}
+
+#score2 {
+    margin-left: 50px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 24px auto 0 auto;
+}
+
+.button-row1,
+.button-row2 {
+    display: flex;
+    flex-direction: row;
+    gap: 25px; 
+    justify-content: center;
+}
+
+#team1_plus_1, #team1_minus_1 {
+    margin-right: 50px;
+}
+
+#team2_plus_2, #team2_minus_2 {
+    margin-left: 50px;
 }
 
 /* 
