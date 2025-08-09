@@ -1,0 +1,27 @@
+/* :root {
+	--buttonSpacingFromCenter: 80px;
+	--buttonBorderRadius: 5px;
+} */
+
+@font-face {
+	font-family: 'BebasNeue-Regular';
+	src: url('../fonts/bebas_neue/BebasNeue-Regular.ttf') format('truetype');
+}
+
+input {
+	font-family: 'BebasNeue-Regular', sans-serif;
+	font-size: 12px;
+	display: inline-flex;
+	padding: 10px;
+	background: none;
+	border: 0;
+}
+
+/* .uneditable:focus {
+	outline: none;
+}
+
+.uneditable {
+	cursor: default;
+} */
+
