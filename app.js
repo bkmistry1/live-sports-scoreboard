@@ -54,7 +54,6 @@ io.on('connection', (socket) => {
     });
 
     socket.on('text_overlay', (textOverlayObj) => {
-      console.log(textOverlayObj);
       io.emit('text_overlay_background', textOverlayObj);
     })
 
