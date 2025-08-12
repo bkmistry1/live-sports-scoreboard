@@ -9,6 +9,7 @@ const soccerScoreInputRoutes = require('./score_input_view_soccer')
 const liveChatRouter = require('./live_chat')
 const yoloboxConnectionRoutes = require('./yolobox_connection_view')
 const textOverlayBackgroundRoutes = require('./text_overlay_background_view')
+const textOverlayInputRoutes = require('./text_overlay_input_view')
 
 
 const constructorMethod = app => {
@@ -29,6 +30,7 @@ const constructorMethod = app => {
 	app.use('/score_input_view_soccer', soccerScoreInputRoutes)
 	app.use('/live_chat', liveChatRouter)
 	app.use('/yolobox_connection', yoloboxConnectionRoutes)
+	app.use('/text_overlay_input_view', textOverlayInputRoutes)
 	app.use('/text_overlay_background_view', textOverlayBackgroundRoutes)
 
 	app.use('*', (req, res) => {

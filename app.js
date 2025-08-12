@@ -53,6 +53,11 @@ io.on('connection', (socket) => {
       io.emit('score_frisbee', scoreObj);
     });
 
+    socket.on('text_overlay', (textOverlayObj) => {
+      console.log(textOverlayObj);
+      io.emit('text_overlay_background', textOverlayObj);
+    })
+
   });
 
 server.listen(dotEnv.httpPort, () => {
