@@ -42,9 +42,26 @@
             const data = await response.json();
 
             if (data.success) {
+                const liveChatList = $("#liveChatList");
+
                 // Process messages
-                data.messages.forEach(msg => {
-                    console.log(`${msg.authorDetails.displayName}: ${msg.snippet.displayMessage}`);
+                data.messages.forEach(chat => {
+                    // console.log(`${chat.authorDetails.displayName}: ${chat.snippet.displayMessage}`);
+                    const avatarUrl = chat.authorDetails?.profileImageUrl || null;
+                    const authorName = chat.authorDetails?.displayName || 'Unknown';
+                    liveChatList.append(`
+                            <li>
+                                <div class="chat-item">
+                                    ${avatarUrl ? `<img class="chat-avatar" src="${avatarUrl}" alt="${authorName}">` : ''}
+                                    <div class="chat-body">
+                                        <div class="chat-yt">
+                                            <span class="chat-author yt-chat">${authorName}: </span>
+                                            <span class="chat-message">${chat.snippet.displayMessage}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>                        
+                        `);                    
                 });
 
                 // Update token for next iteration
