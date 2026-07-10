@@ -1,109 +1,75 @@
-(($) => {
-let currentNextPageToken = '';
-let targetChatId = '';
-let access_token = '';
-let video_id = '';
+(async () => {
+    let currentNextPageToken = '';
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    // Utility to pause execution
+    const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function getYoutubeLiveChatId() {
-
-	while(video_id.length < 1) {
-		await sleep(2000)
-	}
-
-    try {
-        const response = await fetch(`/live_chat/youtube-chat-id`, {
-            method: 'POST', // 1. Must be POST to send a body
-            headers: {
-                'Content-Type': 'application/json' // 2. Tell the server to expect JSON
-            },
-            body: JSON.stringify({
-                video_id: video_id,     // 3. Pass your variables here
-                access_token: access_token
-            })
-        });
-
+    // 1. Get Access Token
+    async function getYoutubeAccessToken() {
+        const response = await fetch(`/live_chat/oauth/refresh`);
         const data = await response.json();
-        targetChatId = data["liveChatId"]
-
-    } catch (error) {
-        console.error("Error fetching live chat ID:", error);
+        return data.access_token;
     }
-}
 
-async function getYoutubeAccessToken() {
-
-	const response = await fetch(`/live_chat/oauth/refresh`);
-	const responseJson = await response.json()
-	access_token = responseJson["access_token"];
-	// console.log(access_token)
-}
-
-async function getYoutubeVideoId() {
-
-	while(access_token.length < 1) {
-        // console.log("waiting")
-		await sleep(2000)
-	}
-
-    try {
+    // 2. Get Video ID (requires access token)
+    async function getYoutubeVideoId(accessToken) {
         const response = await fetch(`/live_chat/youtube-live-video`, {
-            method: 'POST', // 1. Must be POST to send a body
-            headers: {
-                'Content-Type': 'application/json' // 2. Tell the server to expect JSON
-            },
-            body: JSON.stringify({
-                access_token: access_token
-            })
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ access_token: accessToken })
         });
-
-		responseJson = await response.json()
-		video_id=responseJson["videoId"]
-        // console.log(video_id)
-
-    } catch (error) {
-        console.error("Error fetching live chat ID:", error);
-    }
-
-}
-
-async function startClientPolling() {
-
-    while(targetChatId.length < 1) {
-        // console.log("waiting")
-		await sleep(2000)
-	}
-
-    try {
-        // Hit your backend route, passing the Chat ID and the latest page token
-        const response = await fetch(`/live_chat/youtube-poll-messages?liveChatId=${targetChatId}&nextPageToken=${currentNextPageToken}`);
         const data = await response.json();
-
-        if (data.success) {
-            // 1. Process your new messages array here!
-            data.messages.forEach(msg => {
-                console.log(`${msg.authorDetails.displayName}: ${msg.snippet.displayMessage}`);
-            });
-
-            // 2. Save the token for the NEXT request so you don't get duplicate messages
-            currentNextPageToken = data.nextPageToken;
-
-            // 3. Wait exactly the amount of time YouTube requested, then poll again
-            setTimeout(startClientPolling, data.pollingInterval);
-        } else {
-            console.error("Server returned an error, retrying in 5s...", data.error);
-            setTimeout(startClientPolling, 5000);
-        }
-    } catch (err) {
-        console.error("Network error, retrying in 5s...", err);
-        setTimeout(startClientPolling, 5000);
+        return data.videoId;
     }
-}
 
-// Start the loop when you are ready
-getYoutubeAccessToken()
-getYoutubeVideoId()
-getYoutubeLiveChatId()
-startClientPolling();
-})(window.jQuery);
+    // 3. Get Live Chat ID (requires video ID and access token)
+    async function getYoutubeLiveChatId(videoId, accessToken) {
+        const response = await fetch(`/live_chat/youtube-chat-id`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ video_id: videoId, access_token: accessToken })
+        });
+        const data = await response.json();
+        return data.liveChatId;
+    }
+
+    // 4. Poll messages recursively
+    async function startClientPolling(chatId) {
+        try {
+            const url = `/live_chat/youtube-poll-messages?liveChatId=${chatId}&nextPageToken=${currentNextPageToken}`;
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.success) {
+                // Process messages
+                data.messages.forEach(msg => {
+                    console.log(`${msg.authorDetails.displayName}: ${msg.snippet.displayMessage}`);
+                });
+
+                // Update token for next iteration
+                currentNextPageToken = data.nextPageToken;
+
+                // Poll again after the server's recommended interval
+                setTimeout(() => startClientPolling(chatId), data.pollingInterval);
+            } else {
+                console.error("Server error, retrying in 5s...", data.error);
+                setTimeout(() => startClientPolling(chatId), 5000);
+            }
+        } catch (err) {
+            console.error("Network error, retrying in 5s...", err);
+            setTimeout(() => startClientPolling(chatId), 5000);
+        }
+    }
+
+    // --- Main Orchestration ---
+    try {
+        const accessToken = await getYoutubeAccessToken();
+        const videoId = await getYoutubeVideoId(accessToken);
+        const chatId = await getYoutubeLiveChatId(videoId, accessToken);
+
+        console.log("Initialization successful. Starting chat polling...");
+        startClientPolling(chatId);
+    } catch (error) {
+        console.error("Initialization failed:", error);
+    }
+})();
