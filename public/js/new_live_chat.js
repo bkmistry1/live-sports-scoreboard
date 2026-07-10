@@ -1,4 +1,10 @@
 (($) => {
+	const liveChatContainer = $("#liveChatContainer");
+
+	liveChatContainer.on("click", function () {
+		$(this).toggleClass("chat-compact-view");
+	});
+
 	// Fetch live chats and update the DOM
 	async function fetchLiveChats() {
 		try {
@@ -43,6 +49,6 @@
 
 	fetchLiveChats();
 
-	// Fetch live chats every 10 seconds
-	setInterval(fetchLiveChats, 10000);
+	// Fetch live chats every 6 seconds
+	setInterval(fetchLiveChats, 6000);
 })(window.jQuery);
