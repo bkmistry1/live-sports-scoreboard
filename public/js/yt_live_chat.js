@@ -1,5 +1,6 @@
 (async () => {
     let currentNextPageToken = '';
+    let pollingInterval = 15000
 
     // Utility to pause execution
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -49,15 +50,18 @@
                 // Update token for next iteration
                 currentNextPageToken = data.nextPageToken;
 
-                // Poll again after the server's recommended interval
-                setTimeout(() => startClientPolling(chatId), data.pollingInterval);
+                // Poll again after the server's recommended interval                
+                if(data.pollingInterval > 15000) {
+                    pollingInterval = data.pollingInterval
+                }
+                setTimeout(() => startClientPolling(chatId), pollingInterval);
             } else {
-                console.error("Server error, retrying in 5s...", data.error);
-                setTimeout(() => startClientPolling(chatId), 5000);
+                console.error("Server error, retrying in 15s...", data.error);
+                setTimeout(() => startClientPolling(chatId), 15000);
             }
         } catch (err) {
-            console.error("Network error, retrying in 5s...", err);
-            setTimeout(() => startClientPolling(chatId), 5000);
+            console.error("Network error, retrying in 15s...", err);
+            setTimeout(() => startClientPolling(chatId), 15000);
         }
     }
 
