@@ -6,7 +6,6 @@ let video_id = '';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-
 async function getYoutubeLiveChatId() {
 
 	while(video_id.length < 1) {
@@ -27,7 +26,6 @@ async function getYoutubeLiveChatId() {
 
         const data = await response.json();
         targetChatId = data["liveChatId"]
-        // return data; // Return the parsed data (which contains your liveChatId)
 
     } catch (error) {
         console.error("Error fetching live chat ID:", error);
@@ -39,13 +37,13 @@ async function getYoutubeAccessToken() {
 	const response = await fetch(`/live_chat/oauth/refresh`);
 	const responseJson = await response.json()
 	access_token = responseJson["access_token"];
-	console.log(access_token)
+	// console.log(access_token)
 }
 
 async function getYoutubeVideoId() {
 
 	while(access_token.length < 1) {
-        console.log("waiting")
+        // console.log("waiting")
 		await sleep(2000)
 	}
 
@@ -62,7 +60,7 @@ async function getYoutubeVideoId() {
 
 		responseJson = await response.json()
 		video_id=responseJson["videoId"]
-        console.log(video_id)
+        // console.log(video_id)
 
     } catch (error) {
         console.error("Error fetching live chat ID:", error);
@@ -71,6 +69,12 @@ async function getYoutubeVideoId() {
 }
 
 async function startClientPolling() {
+
+    while(targetChatId.length < 1) {
+        // console.log("waiting")
+		await sleep(2000)
+	}
+
     try {
         // Hit your backend route, passing the Chat ID and the latest page token
         const response = await fetch(`/live_chat/youtube-poll-messages?liveChatId=${targetChatId}&nextPageToken=${currentNextPageToken}`);
