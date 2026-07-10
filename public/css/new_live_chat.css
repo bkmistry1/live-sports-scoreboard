@@ -1,0 +1,126 @@
+#liveChatContainer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 400px;
+    background-color: rgba(40, 40, 40, 0.25);
+    color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    padding: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#liveChatContainer.chat-compact-view {
+    background: transparent;
+    padding: 6px 8px;
+    box-shadow: none;
+    border: none;
+    backdrop-filter: none;
+    border-radius: 0;
+}
+
+#liveChatContainer h3 {
+    display: none;
+}
+
+#liveChatList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+#liveChatContainer.chat-compact-view #liveChatList {
+    padding: 0;
+}
+
+#liveChatList::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+#liveChatList li {
+    background-color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 14px;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#liveChatContainer.chat-compact-view #liveChatList li {
+    background: transparent;
+    margin-bottom: 0;
+    padding: 2px 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.chat-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+#liveChatContainer.chat-compact-view .chat-item {
+    gap: 6px;
+}
+
+.chat-avatar {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+#liveChatContainer.chat-compact-view .chat-avatar {
+    width: 16px;
+    height: 16px;
+    border: none;
+}
+
+.chat-body {
+    flex: 1;
+}
+
+.chat-meta {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.chat-author {
+    color: #111;
+}
+
+.fb-chat {
+    color: #1877f2;
+}
+
+.chat-time {
+    opacity: 0.8;
+    font-size: 0.78rem;
+}
+
+.chat-message {
+    color: #222;
+    margin: 0;
+    line-height: 1.4;
+    font-family: 'Roboto', sans-serif;
+}
+
+#liveChatContainer.chat-compact-view .chat-message {
+    line-height: 1.25;
+}
