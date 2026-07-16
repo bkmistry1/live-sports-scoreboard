@@ -1,12 +1,25 @@
 (async ($) => {
+	const baseUrl = window.location.origin;
+	const socket = io();
 	const liveChatContainer = $("#liveChatContainer");
+	const liveChatList = $("#liveChatList");
 	let youtubeState = {
 		chatId: null,
 		initialized: false
 	};
-
-	liveChatContainer.on("click", function () {
-		$(this).toggleClass("chat-compact-view");
+	
+	socket.on("live_chat_update", (chatObj) => {
+		console.log("Received live chat update:", chatObj);
+		if (chatObj?.compact !== null && chatObj?.compact !== undefined) {
+			liveChatContainer.toggleClass("chat-compact-view", chatObj.compact);
+		}
+		if (chatObj?.visible !== null && chatObj?.visible !== undefined) {
+			if (chatObj.visible) {
+				liveChatContainer.show();
+			} else {
+				liveChatContainer.hide();
+			}
+		}
 	});
 
 	// Initialize YouTube chat ID (one-time setup)

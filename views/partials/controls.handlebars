@@ -1,0 +1,179 @@
+<div class="controls-page">
+  <section class="control-card">
+    <h1>Controls Center</h1>
+  </section>
+
+  <section class="control-card">
+    <div class="control-heading-row">
+      <h2>Score Input</h2>
+      <div class="button-row">
+        <button id="resetScore" class="controls-button" type="button">Reset</button>
+        <button id="goToSportButton" class="controls-button secondary" type="button">Open view</button>
+      </div>
+    </div>
+
+    <label for="sportSelect">Select a sport</label>
+    <select id="sportSelect" class="controls-select">
+      <option value="soccer">Soccer</option>
+      <option value="frisbee">Frisbee</option>
+      <option value="basketball">Basketball</option>
+      <option value="volleyball">Volleyball</option>
+    </select>
+
+    <div class="sport-form-panel is-active" data-sport="soccer">
+      <div class="form-grid">
+        <label class="control-field header-field">
+          <span>Header</span>
+          <input type="text" value="BCSF Soccer" data-field="info" data-default="BCSF Soccer" />
+        </label>
+        <label class="control-field">
+          <span>Team 1</span>
+          <input type="text" value="Team 1" data-field="team1Name" data-default="Team 1" />
+        </label>
+        <label class="control-field">
+          <span>Team 2</span>
+          <input type="text" value="Team 2" data-field="team2Name" data-default="Team 2" />
+        </label>
+        <label class="control-field">
+          <span>Team 1 Pts</span>
+          <input type="number" min="0" value="0" data-field="team1Score" data-default="0" />
+        </label>
+        <label class="control-field">
+          <span>Team 2 Pts</span>
+          <input type="number" min="0" value="0" data-field="team2Score" data-default="0" />
+        </label>
+      </div>
+      <!--div class="button-row">
+        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="-1">Team 1 -1</button>
+        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="1">Team 1 +1</button>
+        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="-1">Team 2 -1</button>
+        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="1">Team 2 +1</button>
+      </div-->
+    </div>
+
+    <div class="sport-form-panel" data-sport="frisbee">
+      <div class="form-grid">
+        <label class="control-field header-field">
+          <span>Header</span>
+          <input type="text" value="BCSF Frisbee" data-field="header" data-default="BCSF Frisbee" />
+        </label>
+        <label class="control-field">
+          <span>Team 1</span>
+          <input type="text" value="Team 1" data-field="team1Name" data-default="Team 1" />
+        </label>
+        <label class="control-field">
+          <span>Team 2</span>
+          <input type="text" value="Team 2" data-field="team2Name" data-default="Team 2" />
+        </label>
+        <label class="control-field">
+          <span>Team 1 Pts</span>
+          <input type="number" min="0" value="0" data-field="team1Score" data-default="0" />
+        </label>
+        <label class="control-field">
+          <span>Team 2 Pts</span>
+          <input type="number" min="0" value="0" data-field="team2Score" data-default="0" />
+        </label>
+      </div>
+      <!--div class="button-row">
+        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="-1">Team 1 -1</button>
+        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="1">Team 1 +1</button>
+        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="-1">Team 2 -1</button>
+        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="1">Team 2 +1</button>
+      </div-->
+    </div>
+
+    <div class="sport-form-panel" data-sport="basketball">
+      <div class="form-grid">
+        <label class="control-field header-field">
+          <span>Header</span>
+          <input type="text" value="BCSF Basketball" data-field="header" data-default="BCSF Basketball" />
+        </label>
+        <label class="control-field">
+          <span>Team 1</span>
+          <input type="text" value="Team 1" data-field="team1Name" data-default="Team 1" />
+        </label>
+        <label class="control-field">
+          <span>Team 2</span>
+          <input type="text" value="Team 2" data-field="team2Name" data-default="Team 2" />
+        </label>
+        <label class="control-field">
+          <span>Team 1 Pts</span>
+          <input type="number" min="0" value="0" data-field="team1Score" data-default="0" />
+        </label>
+        <label class="control-field">
+          <span>Team 2 Pts</span>
+          <input type="number" min="0" value="0" data-field="team2Score" data-default="0" />
+        </label>
+      </div>
+      <!--div class="button-row">
+        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="-1">Team 1 -1</button>
+        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="1">Team 1 +1</button>
+        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="-1">Team 2 -1</button>
+        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="1">Team 2 +1</button>
+      </div-->
+    </div>
+
+    <div class="sport-form-panel" data-sport="volleyball">
+      <div class="form-grid">
+        <label class="control-field">
+          <span>Team 1</span>
+          <input type="text" value="Team 1" data-field="team1Name" data-default="Team 1" />
+        </label>
+        <label class="control-field">
+          <span>Team 2</span>
+          <input type="text" value="Team 2" data-field="team2Name" data-default="Team 2" />
+        </label>
+        <label class="control-field">
+          <span>Team 1 Pts</span>
+          <input type="number" min="0" value="0" data-field="team1Score" data-default="0" />
+        </label>
+        <label class="control-field">
+          <span>Team 2 Pts</span>
+          <input type="number" min="0" value="0" data-field="team2Score" data-default="0" />
+        </label>
+        <label class="control-field">
+          <span>Set 1</span>
+          <input type="number" min="0" value="0" data-field="set1Score" data-default="0" />
+        </label>
+        <label class="control-field">
+          <span>Set 2</span>
+          <input type="number" min="0" value="0" data-field="set2Score" data-default="0" />
+        </label>
+      </div>
+      <!--div class="button-row">
+        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="-1">Team 1 -1</button>
+        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="1">Team 1 +1</button>
+        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="-1">Team 2 -1</button>
+        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="1">Team 2 +1</button>
+      </div-->
+    </div>
+  </section>
+
+  <section class="control-card">
+    <div class="control-heading-row">
+      <h2>Live Stream</h2>
+      <div class="button-row">
+        <button id="toggleLiveChat" class="controls-button" type="button" data-visible="true">Hide Live Chat</button>
+        <button id="toggleChatVisibility" class="controls-button" type="button" data-compact="false">Change to Compact View</button>
+        <button id="goToLiveChat" class="controls-button secondary" type="button" onclick="window.open('/live_chat', '_blank');">Open view</button>
+      </div>
+    </div>
+    
+
+  </section>
+
+  <section class="control-card">
+    <div class="control-heading-row">
+      <h2>Text Overlay</h2>
+      <div class="button-row">
+        <button id="goToLiveChat" class="controls-button secondary" type="button" onclick="window.open('/text_overlay_background_view', '_blank');">Open view</button>
+      </div>
+    </div>
+    
+    <label class="control-field">
+      <input id="editable-text" type="text" value="" placeholder="type here"/>
+    </label>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/public/js/controls.js"></script>
