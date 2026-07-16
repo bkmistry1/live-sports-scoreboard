@@ -61,6 +61,10 @@ io.on('connection', (socket) => {
       io.emit('live_chat_update', chatObj);
     });
 
+    socket.on('text_overlay_align', (alignment) => {
+      io.emit('text_overlay_alignment', alignment);
+    })
+
   });
 
 server.listen(dotEnv.httpPort, () => {
