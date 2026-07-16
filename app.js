@@ -57,6 +57,10 @@ io.on('connection', (socket) => {
       io.emit('text_overlay_background', textOverlayObj);
     })
 
+    socket.on('text_overlay_align', (alignment) => {
+      io.emit('text_overlay_alignment', alignment);
+    })
+
   });
 
 server.listen(dotEnv.httpPort, () => {
