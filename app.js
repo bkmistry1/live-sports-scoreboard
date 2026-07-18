@@ -55,7 +55,11 @@ io.on('connection', (socket) => {
 
     socket.on('text_overlay', (textOverlayObj) => {
       io.emit('text_overlay_background', textOverlayObj);
-    })
+    });
+
+    socket.on('live_chat', (chatObj) => {
+      io.emit('live_chat_update', chatObj);
+    });
 
     socket.on('text_overlay_align', (alignment) => {
       io.emit('text_overlay_alignment', alignment);
