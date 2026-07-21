@@ -16,15 +16,18 @@ body {
 	animation: fadein 1.25s ease-in-out;
 }
 
-input {
-	font-size: 24px;
+.scoreboard-view-basketball input {
 	display: inline-flex;
-	padding: 10px;
+	padding: 15px 10px 5px 10px;
 	background: none;
 	border: 0;
+	color:white;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
-input.header {
+.scoreboard-view-basketball input.header {
 	position: absolute;
 	width: 95px;
 	left: 185px;
@@ -40,7 +43,21 @@ input.header {
 	cursor: default;
 }
 
-div.scoreboardOuterContainer {
+.scoreboard-view-basketball {
+	display: flex;
+}
+
+.scoreboard-view-basketball .scoreboard-img-container {
+    background-image: url("/public/images/scoreboardBasketball.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Adjust width and height to the background image's */
+    width: 294px;     
+    height: 144px;
+}
+
+.scoreboard-view-basketball div.scoreboardOuterContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -49,41 +66,40 @@ div.scoreboardOuterContainer {
 	z-index: 1;
 }
 
-div.scoreboardOuterContainer > div {
+.scoreboard-view-basketball div.scoreboardOuterContainer > div {
 	display: flex;
 	z-index: 1;
 }
 
-div.basketballTeam1 > input,
-div.basketballTeam2 > input {
+.scoreboard-view-basketball div.basketballTeam1 > input,
+.scoreboard-view-basketball div.basketballTeam2 > input {
 	font-size: 24px;
 	display: inline-flex;
-	padding: 10px;
 	background: none;
 	border: 0;
 }
 
-input.basketballTeam1,
-input.basketballTeam2 {
+.scoreboard-view-basketball input.basketballTeam1,
+.scoreboard-view-basketball input.basketballTeam2 {
 	width: 100%;
 }
 
-#basketballTeam1,
-#basketballTeam2 {
+.scoreboard-view-basketball #basketballTeam1,
+.scoreboard-view-basketball #basketballTeam2 {
 	width: 110px;
 }
 
-#basketballScore1,
-#basketballScore2 {
+.scoreboard-view-basketball #basketballScore1,
+.scoreboard-view-basketball #basketballScore2 {
 	width: 35px;
 	text-align: center;
 }
 
-.scoreboard-images {
+.scoreboard-view-basketball .scoreboard-images {
 	z-index: 0;
 }
 
-.scoreboard-view-basketball {
+.scoreboard-view-basketball .scoreboard-view-basketball {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start; 
@@ -91,7 +107,7 @@ input.basketballTeam2 {
 	gap: 24px; 
 }
 
-.marquee-container {
+.scoreboard-view-basketball .marquee-container {
   	display: flex ;
 	overflow: hidden ;
 	white-space: nowrap ;
@@ -101,7 +117,7 @@ input.basketballTeam2 {
 	top: 108px;
 }
 
-.marquee-text {
+.scoreboard-view-basketball .marquee-text {
 	animation-duration: 4s ;
 	animation-iteration-count: infinite ;
 	animation-name: marquee-content ;
@@ -109,6 +125,7 @@ input.basketballTeam2 {
 	padding: 5px 15px 5px 15px ;
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
+	color:white;
 }
 
 @keyframes marquee-content {
@@ -122,13 +139,13 @@ input.basketballTeam2 {
 
 /* Button Styling */
 
-.button-container {
+.scoreboard-view-basketball .button-container {
 	margin: 10px;
 	display: flex;
     flex-direction: column;
 }
 
-button {
+.scoreboard-view-basketball button {
 	padding: 5px 20px;
 	margin: 5px;
 	font-size: 16px;
@@ -136,7 +153,7 @@ button {
 	border-radius: var(--buttonBorderRadius);
 }
 
-.scoreInputButtons button {
+.scoreboard-view-basketball .scoreInputButtons button {
 	opacity: 0.95;
 	color: white;
 	background-color: #9d3f3f;
@@ -144,17 +161,17 @@ button {
 	transition: background-color 0.3s ease;
 }
 
-#basketballTeam1Buttons button:hover {
+.scoreboard-view-basketball #basketballTeam1Buttons button:hover {
 	opacity: 0.95;
 	background-color: #fb5a02;
 }
 
-#basketballTeam2Buttons button:hover {
+.scoreboard-view-basketball #basketballTeam2Buttons button:hover {
 	opacity: 0.95;
 	background-color: #233fc6;
 }
 
-button.reset {
+.scoreboard-view-basketball button.reset {
 	padding: 8px 16px;
 	font-size: 14px;
 	border: 1px solid #e74c3c;
@@ -165,7 +182,7 @@ button.reset {
 	transition: all 0.2s ease;
 }
 
-button.reset:hover {
+.scoreboard-view-basketball button.reset:hover {
 	background-color: #e74c3c;
 	border-radius: 0;
 	color: white;

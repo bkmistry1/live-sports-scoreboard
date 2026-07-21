@@ -4,14 +4,14 @@
 	const socket = io(baseUrl);
 
 	socket.on("score_volleyball", (scoreObj) => {
-		const score1 = $("#score1");
-		const score2 = $("#score2");
+		const score1 = $(".scoreboard-view-volleyball #score1");
+		const score2 = $(".scoreboard-view-volleyball #score2");
 
-		const team1 = $("#team1");
-		const team2 = $("#team2");
+		const team1 = $(".scoreboard-view-volleyball #team1");
+		const team2 = $(".scoreboard-view-volleyball #team2");
 
-		const set1 = $("#set1");
-		const set2 = $("#set2");
+		const set1 = $(".scoreboard-view-volleyball #set1");
+		const set2 = $(".scoreboard-view-volleyball #set2");
 
 		score1.val(scoreObj.team1);
 		score2.val(scoreObj.team2);

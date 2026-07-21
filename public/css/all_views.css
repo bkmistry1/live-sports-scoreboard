@@ -1,0 +1,13 @@
+@import "soccer_style.css";
+@import "basketball_style.css";
+@import "frisbee_style.css";
+@import "volleyball_style.css";
+@import "text_overlay_style.css";
+
+.sport-view {
+  display: none;
+}
+
+.sport-view.is-active {
+  display: block;
+}
