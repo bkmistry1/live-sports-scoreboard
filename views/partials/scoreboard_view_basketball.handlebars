@@ -1,28 +1,30 @@
-<div class="scoreboardOuterContainer">
-    <div class="basketballTeam1">
-        <input class="basketballTeam1 uneditable" id="basketballTeam1" name="basketballTeam1name" type="text" value="TBD" readonly="true"></input>
-        <input class="basketballTeam1 uneditable" id="basketballScore1" name="basketballTeam1score" type="text" value="0" readonly="true"></input>
-    </div>
+<div class="scoreboard-view-basketball">
+    <div class="scoreboard-img-container">
+        <div class="scoreboardOuterContainer">
+            <div class="basketballTeam1">
+                <input class="basketballTeam1 uneditable" id="basketballTeam1" name="basketballTeam1name" type="text" value="TBD" readonly="true"></input>
+                <input class="basketballTeam1 uneditable" id="basketballScore1" name="basketballTeam1score" type="text" value="0" readonly="true"></input>
+            </div>
 
-    <div class="basketballTeam2">
-        <input class="basketballTeam2 uneditable" id="basketballTeam2" type="text" value="TBD" readonly="true"></input>
-        <input class="basketballTeam2 uneditable" id="basketballScore2" type="text" value="0" readonly="true"></input>
+            <div class="basketballTeam2">
+                <input class="basketballTeam2 uneditable" id="basketballTeam2" type="text" value="TBD" readonly="true"></input>
+                <input class="basketballTeam2 uneditable" id="basketballScore2" type="text" value="0" readonly="true"></input>
+            </div>
+        </div>
+
+        <div class="marquee-container">
+            <span class="header basketballHeader uneditable marquee-text" id="basketballHeader" >
+                BCSFBasketball
+            </span>
+            <span class="header basketballHeader uneditable marquee-text" id="basketballHeader" >
+                BCSFBasketball
+            </span>
+            <!--<input class="header uneditable marquee-text" id="basketballHeader" type="text" value="BCSFBasketball" readonly="true">-->
+        </div>
+
+        <img class="scoreboard-images" src="/public/images/{{scoreboard}}" alt="" />
     </div>
 </div>
-
-<div class="marquee-container">
-    <span class="header basketballHeader uneditable marquee-text" id="basketballHeader" >
-        BCSFBasketball
-    </span>
-    <span class="header basketballHeader uneditable marquee-text" id="basketballHeader" >
-        BCSFBasketball
-    </span>
-    <!--<input class="header uneditable marquee-text" id="basketballHeader" type="text" value="BCSFBasketball" readonly="true">-->
-</div>
-
-<img class="scoreboard-images" src="/public/images/{{scoreboard}}" alt="" />
-
-
 
 
 <script src="/socket.io/socket.io.js"></script>

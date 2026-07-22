@@ -65,6 +65,10 @@ io.on('connection', (socket) => {
       io.emit('text_overlay_alignment', alignment);
     })
 
+    socket.on('sport_type', (sport) => {
+      io.emit('sport_type_change', sport);
+    });
+
   });
 
 server.listen(dotEnv.httpPort, () => {

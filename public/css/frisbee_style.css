@@ -16,18 +16,28 @@ body {
 	animation: fadein 1.25s ease-in-out;
 }
 
-div.scoreboardOuterContainer {
+.scoreboard-view-frisbee .scoreboard-img-container {
+    background-image: url("/public/images/scoreboardfrisBIG.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* Adjust width and height to the background image's */
+    width: 813px;     
+    height: 100px;
+}
+
+.scoreboard-view-frisbee div.scoreboardOuterContainer {
 	display: flex;
 	justify-content: space-between;
 	position: absolute;
 	width: 590px;
 	height: 50px;
 	left: 29px;
-	top: 5vh;
+	top: 6vh;
 	z-index: 1;
 }
 
-div.scoreboardOuterContainer > div {
+.scoreboard-view-frisbee div.scoreboardOuterContainer > div {
 	display: flex;
 	width: 250px;
 	height: 100%;
@@ -35,11 +45,14 @@ div.scoreboardOuterContainer > div {
 	z-index: 1;
 }
 
-input {
-	font-size: 24px;
+.scoreboard-view-frisbee input {
 	display: inline-flex;
 	background: none;
 	border: 0;
+	color:white;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 .uneditable:focus {
@@ -50,12 +63,13 @@ input {
 	cursor: default;
 }
 
-input.header {
+.scoreboard-view-frisbee input.header {
 	font-size: 14pt;
 	position: absolute;
 	left: 25px;
 	top: 18px;
 	z-index: 1;
+	font-weight: normal;
 }
 
 input.frisbeeTeam1,
@@ -82,7 +96,7 @@ input.frisbeeTeam2 {
 	text-align: center;
 }
 
-.scoreboard-images {
+.scoreboard-view-frisbee .scoreboard-images {
 	z-index: 0;
 }
 
@@ -90,7 +104,7 @@ input.frisbeeTeam2 {
 
 /* Button Styling */
 
-.button-container {
+.scoreboard-view-frisbee .button-container {
 	display: flex;
 	position: relative;
 	justify-content: center;
@@ -100,18 +114,18 @@ input.frisbeeTeam2 {
 	z-index: 2;
 }
 
-.scoreInputButtons {
+.scoreboard-view-frisbee .scoreInputButtons {
 	display: flex;
 	gap: 10px;
 }
 
-button.reset {
+.scoreboard-view-frisbee button.reset {
 	position: relative;
 	left: 278px;
 	/* top: -40px; */
 }
 
-.scoreInputButtons button {
+.scoreboard-view-frisbee .scoreInputButtons button {
 	opacity: 0.95;
 	padding: 3px 10px;
 	font-size: 14px;
@@ -141,7 +155,7 @@ button.reset {
 	background-color: #fb5a02;
 }
 
-button.reset {
+.scoreboard-view-frisbee button.reset {
 	padding: 8px 16px;
 	font-size: 14px;
 	border: 1px solid #e74c3c;
@@ -152,7 +166,7 @@ button.reset {
 	transition: all 0.2s ease;
 }
 
-button.reset:hover {
+.scoreboard-view-frisbee button.reset:hover {
 	background-color: #e74c3c;
 	border-radius: 0;
 	color: white;

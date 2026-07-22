@@ -9,13 +9,6 @@
   const adjustButtons = $('.button-row .controls-button.secondary');
   const textOverlayInput = $("#editable-text");
 
-  const sportRoutes = {
-    soccer: '/scoreboard_view_soccer',
-    frisbee: '/scoreboard_view_frisbee',
-    basketball: '/scoreboard_view_basketball',
-    volleyball: '/scoreboard_view_volleyball'
-  };
-
   function getActivePanel() {
     return sportPanels.filter('.is-active');
   }
@@ -115,6 +108,10 @@
     return;
   }
 
+  function emitSportTypeChange(sport) {
+    socket.emit('sport_type', sport);
+  }
+
   function activateSportPanel(sport) {
     sportPanels.removeClass('is-active');
     const selectedPanel = sportPanels.filter(`[data-sport="${sport}"]`);
@@ -127,16 +124,7 @@
   if (sportSelect.length) {
     sportSelect.on('change', () => {
       activateSportPanel(sportSelect.val());
-    });
-  }
-
-  if (sportSelect.length && goToSportButton.length) {
-    goToSportButton.on('click', () => {
-      const selectedSport = sportSelect.val();
-      const targetRoute = sportRoutes[selectedSport];
-      if (targetRoute) {
-        window.open(targetRoute, '_blank');
-      }
+      emitSportTypeChange(sportSelect.val());
     });
   }
 

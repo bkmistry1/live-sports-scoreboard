@@ -2,9 +2,14 @@
     --displayBlue: blue;
 }
 
-body {
+.scoreboard-view-soccer .scoreboard-img-container {
     background-image: url("/public/images/scoreboardSoccer.png");
     background-repeat: no-repeat;
+    background-position: center;
+
+    /* Adjust width and height to the background image's */
+    width: 294px;     
+    height: 122px;
 }
 
 .uneditable:focus {
@@ -23,12 +28,7 @@ body {
 	gap: 24px; 
 }
 
-.scoreboard-container {
-    width: 294px;
-    height: 122px;
-}
-
-.scoreboard {
+.scoreboard-view-soccer .scoreboard {
     color:white;
     font-size: 28px;
     font-family: Arial, Helvetica, sans-serif;
@@ -37,23 +37,23 @@ body {
     border: none;
 }
 
-.team {
+.scoreboard-view-soccer .team {
     width: 90px;
     height: 30px;    
     position: absolute;
-    left: 100px;    
+    left: 110px;    
     text-align: left;
 }
 
-#team1 {
-    top: 12px;
+.scoreboard-view-soccer #team1, .scoreboard-view-soccer #score1 {
+    top: 22px;
 }
 
-#team2 {
-    top: 58px;
+.scoreboard-view-soccer #team2, .scoreboard-view-soccer #score2 {
+    top: 68px;
 }
 
-.score {
+.scoreboard-view-soccer .score {
     position: absolute;
     text-align: right;
     height: 30px;
@@ -61,33 +61,26 @@ body {
     left: 230px;
 }
 
-#score1 {    
-    top: 12px;    
-}
-
-#score2 {
-    top: 58px;    
-}
-
-#info_banner {
+.scoreboard-view-soccer #info_banner {
     position: absolute;
-    top: 101px;    
+    top: 109px;    
     text-align: left;
     color:white;
     font-family: Arial, Helvetica, sans-serif;
     background: transparent;
     border: none;   
     width: 273px; 
+    left: 15px;
 }
 
 /* Button Styling */
 
-.button-container {
+.scoreboard-view-soccer .button-container {
 	display: flex;
     flex-direction: column;
 }
 
-button {
+.scoreboard-view-soccer button {
 	padding: 5px 20px;
 	margin: 5px;
 	font-size: 16px;
@@ -95,7 +88,7 @@ button {
 	border-radius: var(--buttonBorderRadius);
 }
 
-.button-row button {
+.scoreboard-view-soccer .button-row button {
 	opacity: 0.95;
 	color: white;
 	background-color: #9d3f3f;
@@ -103,17 +96,17 @@ button {
 	transition: background-color 0.3s ease;
 }
 
-#team1_plus_1:hover, #team1_minus_1:hover {
+.scoreboard-view-soccer #team1_plus_1:hover, #team1_minus_1:hover {
 	opacity: 0.95;
 	background-color: #fb5a02;
 }
 
-#team2_plus_2:hover, #team2_minus_2:hover {
+.scoreboard-view-soccer #team2_plus_2:hover, #team2_minus_2:hover {
 	opacity: 0.95;
 	background-color: #233fc6;
 }
 
-button.reset {
+.scoreboard-view-soccer button.reset {
 	padding: 8px 16px;
 	font-size: 14px;
 	border: 1px solid #e74c3c;
@@ -124,7 +117,7 @@ button.reset {
 	transition: all 0.2s ease;
 }
 
-button.reset:hover {
+.scoreboard-view-soccer button.reset:hover {
 	background-color: #e74c3c;
 	border-radius: 0;
 	color: white;

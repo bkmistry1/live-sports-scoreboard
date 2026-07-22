@@ -10,7 +10,12 @@
 	cursor: default;
 }
 
-.scoreboard {
+.scoreboard-view-volleyball {
+    display: flex;
+    justify-content: center;
+}
+
+.scoreboard-view-volleyball .scoreboard {
     text-align: center;
     color:white;
     font-size: 45px;
@@ -20,23 +25,23 @@
     border: none;
 }
 
-.team {
+.scoreboard-view-volleyball .team {
     width: 130px;
     height: 65px;
 }
 
-.score {
+.scoreboard-view-volleyball .score {
     width: 75px;
     height: 65px;
 }
 
-.set {
+.scoreboard-view-volleyball .set {
     width: 75px;
     height: 65px; 
     padding-top: 20px;   
 }
 
-.button_score {
+.scoreboard-view-volleyball .button_score {
 	opacity: 0.95;
 	padding: 5px 20px;
 	font-size: 16px;
@@ -48,7 +53,7 @@
 	transition: background-color 0.3s ease;
 }
 
-.button_set {
+.scoreboard-view-volleyball .button_set {
 	opacity: 0.95;
 	padding: 5px 20px;
 	font-size: 16px;
@@ -60,7 +65,7 @@
 	transition: background-color 0.3s ease;
 }
 
-button.reset {
+.scoreboard-view-volleyball button.reset {
 	padding: 8px 16px;
 	font-size: 14px;
 	border: 1px solid #e74c3c;
@@ -71,20 +76,20 @@ button.reset {
 	transition: all 0.2s ease;
 }
 
-button.reset:hover {
+.scoreboard-view-volleyball button.reset:hover {
 	background-color: #e74c3c;
 	border-radius: 0;
 	color: white;
 	transition: all 0.3s ease-out;
 }
 
-.scoreboard-view-volleyball {
+.scoreboard-view-volleyball .scoreboard-view-volleyball {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.scoreboard-img-container {
+.scoreboard-view-volleyball .scoreboard-img-container {
     background-image: url("/public/images/scoreboardvball.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -99,23 +104,23 @@ button.reset:hover {
     align-items: center;
 }
 
-#team1 {
+.scoreboard-view-volleyball #team1 {
     margin-left: 5px;
 }
 
-#team2 {
+.scoreboard-view-volleyball #team2 {
     margin-right: 5px;
 }
 
-#score1 {
+.scoreboard-view-volleyball #score1 {
     margin-right: 50px;
 }
 
-#score2 {
+.scoreboard-view-volleyball #score2 {
     margin-left: 50px;
 }
 
-.button-container {
+.scoreboard-view-volleyball .button-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,19 +128,19 @@ button.reset:hover {
     margin: 24px auto 0 auto;
 }
 
-.button-row1,
-.button-row2 {
+.scoreboard-view-volleyball .button-row1,
+.scoreboard-view-volleyball .button-row2 {
     display: flex;
     flex-direction: row;
     gap: 25px; 
     justify-content: center;
 }
 
-#team1_plus_1, #team1_minus_1 {
+.scoreboard-view-volleyball #team1_plus_1, .scoreboard-view-volleyball #team1_minus_1 {
     margin-right: 50px;
 }
 
-#team2_plus_2, #team2_minus_2 {
+.scoreboard-view-volleyball #team2_plus_2, .scoreboard-view-volleyball #team2_minus_2 {
     margin-left: 50px;
 }
 

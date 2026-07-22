@@ -8,4 +8,11 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/views', (req, res) => {
+  res.render('partials/all_views', {
+    title: 'All Views',
+    shortcode: 'all_views'
+  });
+});
+
 module.exports = router;
