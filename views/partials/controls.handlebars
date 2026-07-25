@@ -43,12 +43,6 @@
           <input type="number" min="0" value="0" data-field="team2Score" data-default="0" />
         </label>
       </div>
-      <!--div class="button-row">
-        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="-1">Team 1 -1</button>
-        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="1">Team 1 +1</button>
-        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="-1">Team 2 -1</button>
-        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="1">Team 2 +1</button>
-      </div-->
     </div>
 
     <div class="sport-form-panel" data-sport="frisbee">
@@ -74,12 +68,6 @@
           <input type="number" min="0" value="0" data-field="team2Score" data-default="0" />
         </label>
       </div>
-      <!--div class="button-row">
-        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="-1">Team 1 -1</button>
-        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="1">Team 1 +1</button>
-        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="-1">Team 2 -1</button>
-        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="1">Team 2 +1</button>
-      </div-->
     </div>
 
     <div class="sport-form-panel" data-sport="basketball">
@@ -105,12 +93,6 @@
           <input type="number" min="0" value="0" data-field="team2Score" data-default="0" />
         </label>
       </div>
-      <!--div class="button-row">
-        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="-1">Team 1 -1</button>
-        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="1">Team 1 +1</button>
-        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="-1">Team 2 -1</button>
-        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="1">Team 2 +1</button>
-      </div-->
     </div>
 
     <div class="sport-form-panel" data-sport="volleyball">
@@ -140,12 +122,6 @@
           <input type="number" min="0" value="0" data-field="set2Score" data-default="0" />
         </label>
       </div>
-      <!--div class="button-row">
-        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="-1">Team 1 -1</button>
-        <button class="controls-button secondary" type="button" data-target="team1Score" data-step="1">Team 1 +1</button>
-        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="-1">Team 2 -1</button>
-        <button class="controls-button secondary" type="button" data-target="team2Score" data-step="1">Team 2 +1</button>
-      </div-->
     </div>
   </section>
 
@@ -158,7 +134,18 @@
         <button id="goToLiveChat" class="controls-button secondary" type="button" onclick="window.open('/live_chat', '_blank');">Open view</button>
       </div>
     </div>
-    
+    <div class="panel">
+      <div class="form-grid">
+        <label class="control-field">
+          <span>Bottom (0 is bottommost)</span>
+          <input type="bottom-position" value="0" id="bottom-chat" data-default="0" />
+        </label>
+        <label class="control-field">
+          <span>Right (0 is rightmost)</span>
+          <input type="right-position" value="0" id="right-chat" data-default="0" />
+        </label>
+      </div>
+    </div>
 
   </section>
 

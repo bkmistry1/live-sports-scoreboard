@@ -1,19 +1,28 @@
-<div class="sport-view" data-sport="basketball">
-    {{> scoreboard_view_basketball}}
+<div class="all-views-container">
+    <div class="sport-view" data-sport="basketball">
+        {{> scoreboard_view_basketball}}
+    </div>
+
+    <div class="sport-view is-active" data-sport="soccer">
+        {{> scoreboard_view_soccer}}
+    </div>
+
+    <div class="sport-view" data-sport="volleyball">
+        {{> scoreboard_view_volleyball}}
+    </div>
+
+    <div class="sport-view" data-sport="frisbee">
+        {{> scoreboard_view_frisbee}}
+    </div>
+
+    <div class="overlay-view">
+        {{> text_overlay_background}}
+    </div>
+    <div class="chat-view">
+        {{> new_live_chat}}
+    </div>
+    
 </div>
 
-<div class="sport-view is-active" data-sport="soccer">
-    {{> scoreboard_view_soccer}}
-</div>
-
-<div class="sport-view" data-sport="volleyball">
-    {{> scoreboard_view_volleyball}}
-</div>
-
-<div class="sport-view" data-sport="frisbee">
-    {{> scoreboard_view_frisbee}}
-</div>
-
-{{> text_overlay_background}}
 
 <script src="/public/js/all_views.js"></script>

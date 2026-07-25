@@ -3,6 +3,7 @@
 @import "frisbee_style.css";
 @import "volleyball_style.css";
 @import "text_overlay_style.css";
+@import "new_live_chat.css";
 
 .sport-view {
   display: none;
@@ -10,4 +11,15 @@
 
 .sport-view.is-active {
   display: block;
+}
+
+.overlay-view {
+  position: absolute;
+  top: 300px; 
+  width:100%;
+}
+
+.overlay-view .container {
+  height: 100%;
+  width:100%;
 }

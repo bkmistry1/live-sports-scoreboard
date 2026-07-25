@@ -7,11 +7,16 @@
 		chatId: null,
 		initialized: false
 	};
+	let lastTimeStamp = 0;
 	
 	socket.on("live_chat_update", (chatObj) => {
 		console.log("Received live chat update:", chatObj);
 		if (chatObj?.compact !== null && chatObj?.compact !== undefined) {
-			liveChatContainer.toggleClass("chat-compact-view", chatObj.compact);
+			if (chatObj.compact) {
+				liveChatContainer.addClass("chat-compact-view"); 
+			} else {
+				liveChatContainer.removeClass("chat-compact-view");
+			}
 		}
 		if (chatObj?.visible !== null && chatObj?.visible !== undefined) {
 			if (chatObj.visible) {
@@ -19,6 +24,15 @@
 			} else {
 				liveChatContainer.hide();
 			}
+		}
+		if (chatObj?.bottom !== null && chatObj?.bottom !== undefined) {
+			liveChatContainer.css("bottom", chatObj.bottom + "px");
+		}
+		if (chatObj?.right !== null && chatObj?.right !== undefined) {
+			liveChatContainer.css("right", chatObj.right + "px");
+		}
+		if (liveChatList[0]) {
+			liveChatList[0].scrollTop = liveChatList[0].scrollHeight;
 		}
 	});
 
@@ -79,7 +93,7 @@
 			}
 
 			return (data.messages || []).map(chat => ({
-				author: chat.authorDetails?.displayName || 'Unknown',
+				author: chat.authorDetails?.displayName ? (chat.authorDetails.displayName[0] === '@' ? chat.authorDetails.displayName.slice(1) : chat.authorDetails.displayName) : 'Unknown',
 				text: chat.snippet?.displayMessage || '',
 				timestamp: new Date(chat.snippet?.publishedAt).getTime(),
 				source: 'youtube',
@@ -103,37 +117,49 @@
 		const liveChatList = $("#liveChatList");
 		liveChatList.empty();
 
+		let totalDelay = 0;
 		messages.forEach(chat => {
-			liveChatList.append(`
-				<li>
-					<div class="chat-item">
-						${chat.avatar ? `<img class="chat-avatar" src="${chat.avatar}" alt="${chat.author}">` : ''}
-						<div class="chat-body">
-							<div class="chat-meta">
-								<span class="chat-author ${chat.className}">${chat.author}: </span>
-								<span class="chat-message">${chat.text}</span>
+			// delay new messages from 0 to 1 second
+			const timeDiff = Math.max(0, chat.timestamp - lastTimeStamp);
+			const delay = timeDiff === 0 ? 0 : Math.min(Math.max(timeDiff / 10, 100), 1000);
+			totalDelay += delay;
+
+			setTimeout(function() {
+				liveChatList.append(`
+					<li>
+						<div class="chat-item">
+							${chat.avatar ? `<img class="chat-avatar" src="${chat.avatar}" alt="${chat.author}">` : ''}
+							<div class="chat-body">
+								<div class="chat-meta">
+									<span class="chat-author ${chat.className}">${chat.author}: </span>
+									<span class="chat-message">${chat.text}</span>
+								</div>
 							</div>
 						</div>
-					</div>
-				</li>
-			`);
-		});
+					</li>
+				`);
 
-		// Auto-scroll to newest messages (at bottom)
-		if (liveChatList[0]) {
-			liveChatList[0].scrollTop = liveChatList[0].scrollHeight;
-		}
+				// Auto-scroll to newest messages (at bottom)
+				if (liveChatList[0]) {
+					liveChatList[0].scrollTop = liveChatList[0].scrollHeight;
+				}
+			}, totalDelay);
+			lastTimeStamp = chat.timestamp;
+		});
 	}
 
 	// Main unified polling function
 	async function pollUnifiedChat() {
-		const [facebookMessages, youtubeMessages] = await Promise.all([
-			fetchFacebookChats(),
-			fetchYoutubeChats()
-		]);
+		// Commenting out facebook for now
+		// const [facebookMessages, youtubeMessages] = await Promise.all([
+		// 	fetchFacebookChats(),
+		// 	fetchYoutubeChats()
+		// ]);
 
-		const allMessages = combineAndSort(facebookMessages, youtubeMessages);
-		renderChats(allMessages);
+		// const allMessages = combineAndSort(facebookMessages, youtubeMessages);
+		// renderChats(allMessages);
+		const msg = await fetchYoutubeChats();
+		renderChats(msg);
 	}
 
 	// YouTube helper functions
