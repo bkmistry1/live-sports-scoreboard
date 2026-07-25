@@ -144,7 +144,7 @@
 					liveChatList[0].scrollTop = liveChatList[0].scrollHeight;
 				}
 			}, totalDelay);
-			lastTimeStamp = chat.timestamp;
+			lastTimeStamp = Math.max(lastTimeStamp, chat.timestamp);
 		});
 	}
 
