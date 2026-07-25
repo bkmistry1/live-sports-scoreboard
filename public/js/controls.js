@@ -8,6 +8,8 @@
   const sportPanels = $('.sport-form-panel');
   const adjustButtons = $('.button-row .controls-button.secondary');
   const textOverlayInput = $("#editable-text");
+  const bottomChatInput = $("#bottom-chat");
+  const rightChatInput = $("#right-chat");
 
   function getActivePanel() {
     return sportPanels.filter('.is-active');
@@ -99,11 +101,12 @@
     socket.emit('text_overlay', text);
   }
 
-  function emitLiveChatSocket(isVisible, isCompact) {
-    console.log('Emitting live chat socket:', { isVisible, isCompact });
+  function emitLiveChatSocket(isVisible, isCompact, bottom = null, right = null) {
     socket.emit('live_chat', {
       visible: isVisible,
-      compact: isCompact
+      compact: isCompact,
+      bottom: bottom,
+      right: right
     });
     return;
   }
@@ -171,9 +174,17 @@
       const compact = toggleChatVisibilityButton.attr('data-compact') === 'true';
       emitLiveChatSocket(null, !compact);
       toggleChatVisibilityButton.attr('data-compact', String(!compact));
-      toggleChatVisibilityButton.text(compact ? 'Change to Full View' : 'Change to Compact View');
+      toggleChatVisibilityButton.text(!compact ? 'Change to Full View' : 'Change to Compact View');
     });
   }
+
+  bottomChatInput.change(() => {
+    emitLiveChatSocket(null, null, bottomChatInput.val(), null);
+  });
+
+  rightChatInput.change(() => {
+    emitLiveChatSocket(null, null, null, rightChatInput.val());
+  });
 
   textOverlayInput.change(() => {	
     emitTextOverlaySocket(textOverlayInput.val());
