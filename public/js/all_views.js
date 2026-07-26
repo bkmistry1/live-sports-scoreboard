@@ -2,7 +2,7 @@
     const baseUrl = window.location.origin;
 	const socket = io(baseUrl);
     const sportViews = $('.sport-view');
-    var isSoccer = true;
+    var isSoccer = false;
     var isFrisbee = false;
     var isBasketball = false;
     var isVolleyball = false;

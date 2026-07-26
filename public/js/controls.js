@@ -190,5 +190,5 @@
     emitTextOverlaySocket(textOverlayInput.val());
 	});
 
-  activateSportPanel(sportSelect.val() || 'soccer');
+  activateSportPanel(sportSelect.val() || 'none');
 })(window.jQuery);
