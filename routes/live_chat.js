@@ -9,7 +9,9 @@ const ACCESS_TOKEN = dotEnv.accessToken
 const bcsf_client_id = dotEnv.BCSF_YOUTUBE_CLIENT_ID
 const bcsf_client_secret = dotEnv.BCSF_YOUTUBE_CLIENT_SECRET
 const bcsf_redirect_url = dotEnv.BCSF_YOUTUBE_REDIRECT_URI
-const bcsf_refresh_token = dotEnv.BCSF_YOUTUBE_REFRESH_TOKEN
+// const bcsf_refresh_token = dotEnv.BCSF_YOUTUBE_REFRESH_TOKEN
+
+let bcsf_refresh_token = null
 
 const API_VERSION = 'v25.0'
 
@@ -227,6 +229,8 @@ router.get('/oauth2callback', async (req, res) => {
 
 		console.log("🚀 Access Token acquired!");
 		console.log("💾 Refresh Token acquired (Save this securely):", refreshToken);
+
+		bcsf_refresh_token = refreshToken
 
 		res.send('Authenticated successfully! Check your server terminal window.');
 		
