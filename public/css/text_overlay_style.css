@@ -38,3 +38,36 @@
 	white-space: pre-wrap;
 	font-family: 'Montserrat-Black';
 }
+
+.page-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;    
+}
+
+/* 2. Position the PNG image at exact coordinates */
+.ig-positioned-png {
+	position: absolute;
+	left: 650px;       /* X coordinate (distance from left) */
+	top: 880px;        /* Y coordinate (distance from top) */
+	width: 60px;       /* Set image size as needed */
+	height: auto;
+}
+
+.fb-positioned-png {
+	position: absolute;
+	left: 650px;       /* X coordinate (distance from left) */
+	top: 950px;        /* Y coordinate (distance from top) */
+	width: 60px;       /* Set image size as needed */
+	height: auto;
+}
+
+.yt-positioned-png {
+	position: absolute;
+	left: 650px;       /* X coordinate (distance from left) */
+	top: 1020px;        /* Y coordinate (distance from top) */
+	width: 60px;       /* Set image size as needed */
+	height: auto;
+}
