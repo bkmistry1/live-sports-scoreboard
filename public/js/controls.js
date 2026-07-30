@@ -1,15 +1,27 @@
 (($) => {
   const socket = io();
+
+  const hideAllButton = $('#hideAll');
+
   const sportSelect = $('#sportSelect');
   const goToSportButton = $('#goToSportButton');
   const resetScoreButton = $('#resetScore');
+
   const toggleLiveChatButton = $('#toggleLiveChat');
   const toggleChatVisibilityButton = $('#toggleChatVisibility');
+
   const sportPanels = $('.sport-form-panel');
   const adjustButtons = $('.button-row .controls-button.secondary');
   const textOverlayInput = $("#editable-text");
+
   const bottomChatInput = $("#bottom-chat");
   const rightChatInput = $("#right-chat");
+
+  const moveChatTopLeftButton = $('#moveChatTopLeft');
+  const moveChatTopRightButton = $('#moveChatTopRight');
+  const moveChatBottomRightButton = $('#moveChatBottomRight');
+  const moveChatBottomLeftButton = $('#moveChatBottomLeft');
+  const resetFullChatViewButton = $('#resetFullChatView');
 
   function getActivePanel() {
     return sportPanels.filter('.is-active');
@@ -189,6 +201,51 @@
   textOverlayInput.change(() => {	
     emitTextOverlaySocket(textOverlayInput.val());
 	});
+
+  moveChatTopLeftButton.on('click', () => {
+    emitLiveChatSocket(null, null, 700, 1500);
+    bottomChatInput.val(700);
+    rightChatInput.val(1500);
+  });
+
+  moveChatTopRightButton.on('click', () => {
+    emitLiveChatSocket(null, null, 700, 0);
+    bottomChatInput.val(700);
+    rightChatInput.val(0);
+  });
+
+  moveChatBottomRightButton.on('click', () => {
+    emitLiveChatSocket(null, null, 0, 0);
+    bottomChatInput.val(0);
+    rightChatInput.val(0);
+  });
+
+  moveChatBottomLeftButton.on('click', () => {
+    emitLiveChatSocket(null, null, 0, 1500);
+    bottomChatInput.val(0);
+    rightChatInput.val(1500);
+  });
+
+  resetFullChatViewButton.on('click', () => {
+    emitLiveChatSocket(null, false, 190, 103);
+    toggleChatVisibilityButton.attr('data-compact', 'false');
+    toggleChatVisibilityButton.text('Change to Compact View');
+    bottomChatInput.val(190);
+    rightChatInput.val(103);
+  });
+
+  hideAllButton.on('click', () => {
+    emitLiveChatSocket(false, null, null, null);
+    toggleLiveChatButton.attr('data-visible', 'false');
+    toggleLiveChatButton.text('Show Live Chat');
+
+    activateSportPanel('none');
+    emitSportTypeChange('none');
+    sportSelect.val('none');
+    
+    emitTextOverlaySocket('');
+    textOverlayInput.val('');
+  });
 
   activateSportPanel(sportSelect.val() || 'none');
 })(window.jQuery);
