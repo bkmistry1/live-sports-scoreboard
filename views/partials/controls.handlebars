@@ -1,6 +1,9 @@
 <div class="controls-page">
-  <section class="control-card">
+  <section class="control-card control-heading-row">
     <h1>Controls Center</h1>
+    <div class="button-row">
+      <button id="hideAll" class="controls-button warning" type="button">Hide All</button>
+    </div>
   </section>
 
   <section class="control-card">
@@ -130,7 +133,7 @@
     <div class="control-heading-row">
       <h2>Live Stream</h2>
       <div class="button-row">
-        <button id="toggleLiveChat" class="controls-button" type="button" data-visible="true">Hide Live Chat</button>
+        <button id="toggleLiveChat" class="controls-button" type="button" data-visible="false">Show Live Chat</button>
         <button id="toggleChatVisibility" class="controls-button" type="button" data-compact="false">Change to Compact View</button>
         <button id="goToLiveChat" class="controls-button secondary" type="button" onclick="window.open('/live_chat', '_blank');">Open view</button>
       </div>
@@ -145,6 +148,13 @@
           <span>Right (0 is rightmost)</span>
           <input type="right-position" value="103" id="right-chat" data-default="103" />
         </label>
+      </div>
+      <div class="button-form-grid">
+        <button id="moveChatTopLeft" class="controls-button secondary" type="button">Move to Top Left</button>
+        <button id="moveChatTopRight" class="controls-button secondary" type="button">Move to Top Right</button>
+        <button id="moveChatBottomRight" class="controls-button secondary" type="button">Move to Bottom Right</button>
+        <button id="moveChatBottomLeft" class="controls-button secondary" type="button">Move to Bottom Left</button>
+        <button id="resetFullChatView" class="controls-button" type="button">Reset to Default Full Chat View</button>
       </div>
     </div>
 
