@@ -8,6 +8,11 @@
 	src: url('../fonts/bebas_neue/BebasNeue-Regular.ttf') format('truetype');
 }
 
+@font-face {
+	font-family: 'Montserrat-Black';
+	src: url('../fonts/Montserrat-Black/Montserrat-Black.ttf') format('truetype');
+}
+
 .container {
 	display: flex;
 	justify-content: center; /* horizontal */
@@ -23,10 +28,13 @@
 	padding: 10px;
 	background: none;
 	/* border: 0; */
-	font-family: sans-serif;
+	/* font-family: sans-serif; */
+	/* font-family: 'Montserrat-Black'; */
 	font-size: 96px;		
 }
 
 .centered-content {
     width: 100%;
+	white-space: pre-wrap;
+	font-family: 'Montserrat-Black';
 }

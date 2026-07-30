@@ -12,19 +12,4 @@
 		centered.text(textInput.val())
 	});
 
-
-
-	// socket1.on("score_change", (companionObj) => {
-	// 	const scoreToChange = $("#"+companionObj.score)
-
-	// 	let scoreValue = parseInt(scoreToChange.val())
-	// 	scoreValue += parseInt(companionObj.value)
-		
-	// 	if(scoreValue < 0) {
-	// 		scoreValue = 0;
-	// 	}
-
-	// 	scoreToChange.val(scoreValue)
-	// });
-
 })(window.jQuery);
