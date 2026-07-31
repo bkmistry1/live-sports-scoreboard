@@ -69,6 +69,10 @@ io.on('connection', (socket) => {
       io.emit('sport_type_change', sport);
     });
 
+    socket.on('text_and_logos', (textLogoObj) => {
+      io.emit('textLogoUpdate', textLogoObj);
+    });    
+
   });
 
 server.listen(dotEnv.httpPort, () => {

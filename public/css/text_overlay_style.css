@@ -39,6 +39,17 @@
 	font-family: 'Montserrat-Black';
 }
 
+.handles-stuff {
+	position: absolute;
+    /* width: 100%; */
+	white-space: pre-wrap;
+	font-family: 'Montserrat-Black';
+	font-size: 30px;
+	top: 885px;
+	left: 715px;
+	line-height: 2.15;
+}
+
 .page-container {
 	position: absolute;
 	top: 0;
@@ -51,7 +62,7 @@
 .ig-positioned-png {
 	position: absolute;
 	left: 650px;       /* X coordinate (distance from left) */
-	top: 880px;        /* Y coordinate (distance from top) */
+	top: 885px;        /* Y coordinate (distance from top) */
 	width: 60px;       /* Set image size as needed */
 	height: auto;
 }
@@ -59,7 +70,7 @@
 .fb-positioned-png {
 	position: absolute;
 	left: 650px;       /* X coordinate (distance from left) */
-	top: 950px;        /* Y coordinate (distance from top) */
+	top: 945px;        /* Y coordinate (distance from top) */
 	width: 60px;       /* Set image size as needed */
 	height: auto;
 }
@@ -67,7 +78,11 @@
 .yt-positioned-png {
 	position: absolute;
 	left: 650px;       /* X coordinate (distance from left) */
-	top: 1020px;        /* Y coordinate (distance from top) */
+	top: 1015px;        /* Y coordinate (distance from top) */
 	width: 60px;       /* Set image size as needed */
 	height: auto;
+}
+
+.logo-handle {
+    display: none;
 }
