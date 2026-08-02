@@ -3,18 +3,18 @@ text_pos_support = {
     // Position Configuration: set as necessary
     positions : {
         announcement: {
-            left: 650,
-	        top: 1200,
+            left: 385,
+	        top: 600,
 	        width: 60
         },
         brb: {
-            left: 150,
-	        top: 885,
+            left: 385,
+	        top: 710,
 	        width: 60
         },
         livechat: {
-            left: 350,
-	        top: 885,
+            left: 90,
+	        top: 440,
 	        width: 60
         }
     },
