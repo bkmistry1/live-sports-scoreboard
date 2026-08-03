@@ -63,7 +63,11 @@ io.on('connection', (socket) => {
 
     socket.on('text_overlay_align', (alignment) => {
       io.emit('text_overlay_alignment', alignment);
-    })
+    });
+
+    socket.on('text_overlay_pos', (position) => {
+      io.emit('text_overlay_position', position);
+    });  
 
     socket.on('sport_type', (sport) => {
       io.emit('sport_type_change', sport);
