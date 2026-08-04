@@ -59,6 +59,23 @@
 		centered.text(text)
 		
 	})	
+
+	$("#commentaryBCSFBottomBoxBtn").on('click', function() {
+		console.log("Clicked");
+		const centered = $("#centered-content");
+
+		const text = "bcsfusa.com/donate"
+		
+		commentaryBoxObj = {
+			"text": text,
+			"top": 885,
+			"left": 100,				
+		}
+
+		socket.emit("commentaryBox_update", commentaryBoxObj);
+		centered.text(text)
+		
+	})	
 		
 	
 
