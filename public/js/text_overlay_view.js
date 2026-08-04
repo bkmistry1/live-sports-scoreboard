@@ -43,4 +43,16 @@
 
 	});	
 
+	socket.on("commentaryBoxPositionUpdate", (commentaryBoxObj) => {
+		const mainDiv = $("#centered-content");
+
+		console.log(commentaryBoxObj["top"])
+		mainDiv.css({
+			top: commentaryBoxObj["top"] || "0px",
+			left: commentaryBoxObj["left"] || "0px",
+		})
+		mainDiv.text(commentaryBoxObj["text"])
+
+	});		
+
 })(window.jQuery);

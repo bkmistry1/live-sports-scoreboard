@@ -34,6 +34,7 @@
 }
 
 .centered-content {
+	position: absolute;
     width: 100%;
 	white-space: pre-wrap;
 	font-family: 'Montserrat-Black';

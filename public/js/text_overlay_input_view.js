@@ -40,6 +40,25 @@
 		}
 		
 	})
+
+
+	$("#commentaryBottomBoxBtn").on('click', function() {
+		console.log("Clicked");
+		const textInput = $("#editable-text");
+		const centered = $("#centered-content");
+
+		text = textInput.val()
+
+		commentaryBoxObj = {
+			"text": text,
+			"top": 885,
+			"left": 100,				
+		}
+
+		socket.emit("commentaryBox_update", commentaryBoxObj);
+		centered.text(text)
+		
+	})	
 		
 	
 

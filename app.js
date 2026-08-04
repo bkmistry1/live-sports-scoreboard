@@ -77,6 +77,10 @@ io.on('connection', (socket) => {
       io.emit('textLogoUpdate', textLogoObj);
     });    
 
+    socket.on('commentaryBox_update', (commentaryBoxObj) => {
+      io.emit('commentaryBoxPositionUpdate', commentaryBoxObj);
+    });        
+
   });
 
 server.listen(dotEnv.httpPort, () => {
